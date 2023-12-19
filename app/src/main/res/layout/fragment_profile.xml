@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="62dp"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".ProfileFragment"
+    android:background="@drawable/imagee"
+    >
+    <!--android:background="@color/maroon"-->
+    <ImageView
+
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/pic"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/kg_hint"
+            android:padding="16dp"
+            android:inputType="textMultiLine"
+            android:textSize="25sp"
+            android:textColorHint="@color/gray"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kg"
+            android:textColor="@color/NavajoWhite"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <EditText
+            android:id="@+id/message2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/age_hint"
+            android:padding="16dp"
+            android:inputType="textMultiLine"
+            android:textSize="25sp"
+            android:textColorHint="@color/gray"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Years"
+            android:textColor="@color/NavajoWhite"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <EditText
+        android:id="@+id/message3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:hint="@string/height_hint"
+        android:inputType="textMultiLine"
+        android:textSize="25sp"
+            android:textColorHint="@color/gray"
+
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cm"
+            android:textColor="@color/NavajoWhite"
+            android:textSize="30sp"
+            android:textStyle="bold"
+
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:text="@string/Change" />
+
+
+</LinearLayout>
