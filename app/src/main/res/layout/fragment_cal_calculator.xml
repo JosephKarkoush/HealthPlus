@@ -1,75 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="20dp"
-    android:gravity="center_horizontal"
-    tools:context=".CalCalculator">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <EditText
-        android:id="@+id/infoKG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:textSize="14dp"
-        android:hint="@string/EnterInfoKG"
-        android:inputType="textMultiLine" />
 
-    <TextView
-        android:id="@+id/textViewKG"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:text=" KG"
-        android:textSize="14dp"
-        android:textStyle="bold" />
+    <!-- Year -->
 
     <EditText
-        android:id="@+id/infoCM"
+        android:id="@+id/editTextYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:textSize="14dp"
-        android:hint="@string/EnterInfoCM"
-        android:inputType="textMultiLine" />
+        android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:hint="@string/year"
+        android:inputType="number"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCM"
+        app:layout_constraintStart_toEndOf="@+id/textViewKG"
+        app:layout_constraintTop_toTopOf="@+id/editTextCM"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textViewCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:text=" CM"
-        android:textSize="14dp"
-        android:textStyle="bold" />
+        android:layout_marginStart="4dp"
+        android:text="@string/cm"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCM"
+        app:layout_constraintStart_toEndOf="@+id/editTextCM"
+        app:layout_constraintTop_toTopOf="@+id/editTextCM" />
+
+    <!-- CM -->
 
     <EditText
-    android:id="@+id/infoYear"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="top|center_horizontal"
-    android:textSize="14dp"
-    android:hint="@string/EnterInfoYear"
-    android:inputType="textMultiLine" />
+        android:id="@+id/editTextKG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:autofillHints=""
+        android:hint="@string/weight"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextCM"
+        app:layout_constraintStart_toEndOf="@+id/textViewCM"
+        app:layout_constraintTop_toTopOf="@+id/editTextCM"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:autofillHints=""
+        android:hint="@string/length"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        android:translationY="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- KG -->
+
+    <TextView
+        android:id="@+id/textViewKG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/kg"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextKG"
+        app:layout_constraintStart_toEndOf="@+id/editTextKG"
+        app:layout_constraintTop_toTopOf="@+id/editTextKG" />
 
     <TextView
         android:id="@+id/textViewYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
-        android:text=" Y"
-        android:textSize="14dp"
-        android:textStyle="bold" />
+        android:layout_marginStart="8dp"
+        android:text="@string/y"
+        android:translationY="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextYear"
+        app:layout_constraintStart_toEndOf="@+id/editTextYear"
+        app:layout_constraintTop_toTopOf="@+id/editTextYear" />
+
+    <!-- Spinner -->
+
+    <!-- daily cals -->
     <Spinner
-        android:id="@+id/beer_color"
+        android:id="@+id/spinnerOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:minHeight="50dp"
-        android:entries="@array/work_rutine"/>
+        android:layout_marginTop="20dp"
+        android:entries="@array/rutine"
+        android:minHeight="48dp"
+        android:translationX="-25dp"
 
-</LinearLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextKG" />
+
+    <TextView
+        android:id="@+id/dailyCaloriesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="508dp"
+        android:text="@string/daily_calories"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- BorderLine -->
+    <View
+        android:id="@+id/borderLine"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="8dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dailyCaloriesText" />
+
+    <!-- BorderLine -->
+
+
+    <View
+        android:id="@+id/borderLine2"
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="116dp"
+        android:background="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dailyCaloriesText" />
+
+    <!-- Protein Label -->
+
+    <TextView
+        android:id="@+id/proteinLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/protein"
+        android:textSize="16sp"
+        android:paddingHorizontal="60dp"
+        app:layout_constraintTop_toBottomOf="@id/borderLine"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+    <!-- Carbs Label -->
+    <TextView
+        android:id="@+id/carbsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/carbs"
+        android:textSize="16sp"
+        android:paddingHorizontal="60dp"
+        app:layout_constraintTop_toBottomOf="@id/proteinLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Fat Label -->
+    <TextView
+        android:id="@+id/fatLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fat"
+        android:textSize="16sp"
+        android:paddingHorizontal="60dp"
+        app:layout_constraintTop_toBottomOf="@id/carbsLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
