@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="62dp"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".ProfileFragment"
-    android:background="@drawable/imagee"
-    >
+    android:background="@drawable/bakgrund">
     <!--android:background="@color/maroon"-->
     <ImageView
 
@@ -104,16 +103,6 @@
         android:padding="8dp"
         android:text="@string/Change" />
 
-
-
-    <androidx.appcompat.widget.SwitchCompat
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:male="@drawable/male"
-        app:female="@drawable/female"
-        app:showText="true"
-        android:textOn="on"
-        android:textOff="off"/>
 
 
 </LinearLayout>
