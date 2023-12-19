@@ -105,4 +105,15 @@
         android:text="@string/Change" />
 
 
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:male="@drawable/male"
+        app:female="@drawable/female"
+        app:showText="true"
+        android:textOn="on"
+        android:textOff="off"/>
+
+
 </LinearLayout>
