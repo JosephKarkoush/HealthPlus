@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:gravity="center_horizontal"
+    tools:context=".CalCalculator">
+
+
+    <EditText
+        android:id="@+id/infoKG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:textSize="14dp"
+        android:hint="@string/EnterInfoKG"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/textViewKG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text=" KG"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/infoCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:textSize="14dp"
+        android:hint="@string/EnterInfoCM"
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/textViewCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text=" CM"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+
+    <EditText
+    android:id="@+id/infoYear"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top|center_horizontal"
+    android:textSize="14dp"
+    android:hint="@string/EnterInfoYear"
+    android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/textViewYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text=" Y"
+        android:textSize="14dp"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/beer_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:minHeight="50dp"
+        android:entries="@array/work_rutine"/>
+
+</LinearLayout>
