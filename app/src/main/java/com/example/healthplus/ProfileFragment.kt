@@ -15,6 +15,9 @@ import android.provider.Settings
 import android.content.Context
 import android.os.Build
 import androidx.annotation.RequiresApi
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 
 class ProfileFragment : Fragment() {
@@ -44,8 +47,9 @@ class ProfileFragment : Fragment() {
         updateUser(deviceImei, name, gender, age, weight, height)
 
     }
+        myRef.addValueEventListener(userListener)
 
-
+//dsdss
         return view
     }
 
@@ -56,5 +60,42 @@ class ProfileFragment : Fragment() {
     }
 
 
+    val userListener = object : ValueEventListener {
+        override fun onDataChange(snapshot: DataSnapshot) {
+            val name = binding.name
+            name.setText("")
+            val age = binding.age
+            age.setText("")
+            val weight = binding.weight
+            weight.setText("")
+            val height = binding.height
+            height.setText("")
+            //-----
+            var nbrOfChildren = snapshot.childrenCount
+            //-----
+            var nameQ = ""
+            var ageQ = ""
+            var weightQ = ""
+            var heightQ = ""
+
+            val children = snapshot.children
+            children.forEach {
+                var user = it.getValue(User::class.java)
+                nameQ = (user?.name ?: "No Name")
+                ageQ = (user?.age ?: "No Name").toString()
+                weightQ = (user?.weight ?: "No Name").toString()
+                heightQ = (user?.height ?: "No Name").toString()
+            }
+            name.setText(nameQ)
+            age.setText(ageQ)
+            weight.setText(weightQ)
+            height.setText(heightQ)
+        }
+
+
+        override fun onCancelled(error: DatabaseError) {
+            TODO("Not yet implemented")
+        }
+    }
 
 }

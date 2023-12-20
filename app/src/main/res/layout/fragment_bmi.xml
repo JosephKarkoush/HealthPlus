@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bakgrund"
+    android:background="#3c3d3d"
     android:orientation="vertical"
     tools:context=".BmiFragment">
 
@@ -17,19 +17,23 @@
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/weight_bmi"
+            android:layout_width="100dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_light_background"
-            android:hint="Vikt"
+            android:hint="@string/vikt"
             android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:inputType="number"
+            android:importantForAutofill="no" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Kg"
+            android:text="@string/kg_bmi"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -43,19 +47,23 @@
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/height_bmi"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_light_background"
-            android:hint="Length"
+            android:hint="@string/length_bmi"
             android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:inputType="number"
+            android:importantForAutofill="no" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Cm"
+            android:text="@string/cm_bmi"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -69,18 +77,22 @@
         android:orientation="horizontal">
 
         <EditText
-            android:layout_width="wrap_content"
+            android:id="@+id/age_bmi"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:backgroundTint="@color/cardview_light_background"
-            android:hint="Age"
+            android:hint="@string/age"
             android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:inputType="number"
+            android:importantForAutofill="no" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:text="Year"
+            android:text="@string/year_bmi"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -94,37 +106,44 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_bmi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calculate"
-            android:textSize="17sp"
-            android:backgroundTint="@color/material_dynamic_neutral40"
             android:layout_gravity="center"
-            />
+            android:backgroundTint="#21a6f3"
+            android:text="@string/calculate"
+            android:textColor="#BBDEFB"
+            android:textSize="17sp" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:src="@drawable/healthy" />
+            android:src="@drawable/healthy"
+            android:importantForAccessibility="no" />
     </LinearLayout>
 
     <com.github.anastr.speedviewlib.SpeedView
+        android:layout_marginTop="30dp"
         android:id="@+id/speedView"
-        android:layout_width="448dp"
-        android:layout_height="403dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
         android:layout_gravity="center"
-        android:layout_marginTop="175dp"
         app:sv_centerCircleRadius="11dp"
-        app:sv_markStyle="ROUND"
-        app:sv_speedometerMode="TOP"
+        app:sv_unitUnderSpeedText = "true"
+        app:sv_unitSpeedInterval="15dp"
+        app:sv_speedTextSize="30dp"
+        app:sv_unitTextSize="20dp"
         app:sv_endDegree="360"
-        app:sv_indicatorColor="@color/material_dynamic_neutral50"
         app:sv_markColor="@color/material_dynamic_neutral20"
+        app:sv_markStyle="ROUND"
         app:sv_maxSpeed="100"
         app:sv_minSpeed="0"
+        app:sv_indicator="KiteIndicator"
+        app:sv_indicatorColor="#3c3d3d"
         app:sv_speedTextFormat="INTEGER"
-        app:sv_speedometerWidth="20dp"
+        app:sv_speedometerMode="TOP"
+        app:sv_speedometerWidth="50dp"
         app:sv_startDegree="180"
         app:sv_tickTextFormat="INTEGER"
         app:sv_unit="BMI" />
