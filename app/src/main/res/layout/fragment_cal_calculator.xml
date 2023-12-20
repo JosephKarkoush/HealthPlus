@@ -6,6 +6,11 @@
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
 
     <!-- Year -->
 
@@ -201,7 +206,7 @@
         android:layout_marginTop="8dp"/>
 
 
-
+    </RelativeLayout>
 
 
 

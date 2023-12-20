@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 
 
-/*
+
 class ProfileFragment : Fragment() {
     private var _binding : FragmentProfileBinding? = null
     private val binding get() = _binding!!
@@ -93,12 +93,12 @@ class ProfileFragment : Fragment() {
             height.setText(heightQ)
         }
 
-*/
-/*
+
+
 
         override fun onCancelled(error: DatabaseError) {
             TODO("Not yet implemented")
         }
     }
 
-}*/
+}

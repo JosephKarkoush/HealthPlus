@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/bmiFragment2">
+    app:startDestination="@id/foodFragment">
     <fragment
-        android:id="@+id/bmiFragment2"
-        android:name="com.example.healthplus.BmiFragment"
-        android:label="fragment_bmi"
-        tools:layout="@layout/fragment_bmi" />
+        android:id="@+id/foodFragment"
+        android:name="com.example.healthplus.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
 </navigation>
