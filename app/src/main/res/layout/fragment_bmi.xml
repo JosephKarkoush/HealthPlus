@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3c3d3d"
+    android:background="#202121"
     android:orientation="vertical"
     tools:context=".BmiFragment">
 
@@ -12,22 +12,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="70dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/weight_bmi"
             android:layout_width="100dp"
-            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_light_background"
+            android:gravity="center"
             android:hint="@string/vikt"
-            android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp"
+            android:importantForAutofill="no"
             android:inputType="number"
-            android:importantForAutofill="no" />
+            android:textColorHint="@color/material_dynamic_neutral40"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,14 +50,14 @@
             android:id="@+id/height_bmi"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
             android:backgroundTint="@color/cardview_light_background"
+            android:gravity="center"
             android:hint="@string/length_bmi"
-            android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp"
+            android:importantForAutofill="no"
             android:inputType="number"
-            android:importantForAutofill="no" />
+            android:textColorHint="@color/material_dynamic_neutral40"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,13 +80,13 @@
             android:id="@+id/age_bmi"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:backgroundTint="@color/cardview_light_background"
+            android:gravity="center"
             android:hint="@string/age"
-            android:textColorHint="@color/material_dynamic_neutral40"
-            android:textSize="24sp"
+            android:importantForAutofill="no"
             android:inputType="number"
-            android:importantForAutofill="no" />
+            android:textColorHint="@color/material_dynamic_neutral40"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,10 +99,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="center"
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
@@ -115,37 +115,39 @@
             android:textColor="#BBDEFB"
             android:textSize="17sp" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/healthy"
-            android:importantForAccessibility="no" />
     </LinearLayout>
 
-    <com.github.anastr.speedviewlib.SpeedView
-        android:layout_marginTop="30dp"
-        android:id="@+id/speedView"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:layout_gravity="center"
-        app:sv_centerCircleRadius="11dp"
-        app:sv_unitUnderSpeedText = "true"
-        app:sv_unitSpeedInterval="15dp"
-        app:sv_speedTextSize="30dp"
-        app:sv_unitTextSize="20dp"
-        app:sv_endDegree="360"
-        app:sv_markColor="@color/material_dynamic_neutral20"
-        app:sv_markStyle="ROUND"
-        app:sv_maxSpeed="100"
-        app:sv_minSpeed="0"
-        app:sv_indicator="KiteIndicator"
-        app:sv_indicatorColor="#3c3d3d"
-        app:sv_speedTextFormat="INTEGER"
-        app:sv_speedometerMode="TOP"
-        app:sv_speedometerWidth="50dp"
-        app:sv_startDegree="180"
-        app:sv_tickTextFormat="INTEGER"
-        app:sv_unit="BMI" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Other views can be added here -->
+
+        <com.github.anastr.speedviewlib.SpeedView
+            android:id="@+id/speedView"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:layout_gravity="bottom|center"
+            app:sv_centerCircleColor="#21a6f3"
+            app:sv_centerCircleRadius="11dp"
+            app:sv_endDegree="360"
+            app:sv_indicator="TriangleIndicator"
+            app:sv_indicatorColor="#21a6f3"
+            app:sv_indicatorWidth="15dp"
+            app:sv_maxSpeed="40"
+            app:sv_minSpeed="0"
+            app:sv_speedTextFormat="INTEGER"
+            app:sv_speedTextSize="30dp"
+            app:sv_speedometerMode="TOP"
+            app:sv_speedometerWidth="50dp"
+            app:sv_startDegree="180"
+            app:sv_tickTextFormat="INTEGER"
+            app:sv_unit="BMI"
+            app:sv_unitSpeedInterval="15dp"
+            app:sv_unitTextSize="20dp"
+            app:sv_unitUnderSpeedText="true"
+            app:sv_withTremble="false" />
+    </FrameLayout>
+
 
 </LinearLayout>
