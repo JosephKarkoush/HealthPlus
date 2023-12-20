@@ -13,7 +13,9 @@
     <string name="cm">CM</string>
     <string name="kg">KG</string>
     <string name="y">Y</string>
+
     <string name="spinner_name">work_rutine\n</string>
+
     <string name="height_hint">Height</string>
     <string name="kg_hint">Kg</string>
     <string name="age_hint">Age</string>
