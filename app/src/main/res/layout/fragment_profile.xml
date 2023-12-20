@@ -10,6 +10,18 @@
     tools:context=".ProfileFragment"
     android:background="@drawable/bakgrund">
     <!--android:background="@color/maroon"-->
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="50sp"
+        android:inputType="text"
+        android:textStyle="bold"
+        android:hint="Name"
+        android:textColorHint="@color/gray"/>
+
     <ImageView
 
         android:layout_width="200dp"
@@ -22,12 +34,12 @@
         android:orientation="horizontal"
         >
         <EditText
-            android:id="@+id/message"
+            android:id="@+id/weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/kg_hint"
             android:padding="16dp"
-            android:inputType="textMultiLine"
+            android:inputType="numberSigned"
             android:textSize="25sp"
             android:textColorHint="@color/gray"
             />
@@ -50,12 +62,12 @@
         android:orientation="horizontal"
         >
         <EditText
-            android:id="@+id/message2"
+            android:id="@+id/age"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="@string/age_hint"
             android:padding="16dp"
-            android:inputType="textMultiLine"
+            android:inputType="numberSigned"
             android:textSize="25sp"
             android:textColorHint="@color/gray"/>
         <TextView
@@ -74,12 +86,12 @@
         android:orientation="horizontal"
         >
         <EditText
-        android:id="@+id/message3"
+        android:id="@+id/height"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:hint="@string/height_hint"
-        android:inputType="textMultiLine"
+        android:inputType="numberSigned"
         android:textSize="25sp"
             android:textColorHint="@color/gray"
 
