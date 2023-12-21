@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/tabsFragment">
+    android:id="@+id/tabsFragment"
+    android:orientation="horizontal">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
@@ -16,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:background="@color/white">
+        android:background="@color/toolbar_color">
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab1"
@@ -28,7 +29,7 @@
             android:id="@+id/tab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/meal"
+            android:icon="@drawable/fastfood"
             android:text="Calorie"/>
 
     </com.google.android.material.tabs.TabLayout>
