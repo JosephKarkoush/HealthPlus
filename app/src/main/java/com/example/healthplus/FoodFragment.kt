@@ -9,14 +9,18 @@ import com.example.healthplus.databinding.FragmentFoodBinding
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
+
+
+
+
 class FoodFragment : Fragment() {
     private var _binding: FragmentFoodBinding? = null
     private val binding get() = _binding!!
-    private lateinit var sharedViewModel: SharedViewModel
     private var name: String = ""
     private var calories: String = ""
     private var serving_size: String = ""
@@ -28,6 +32,11 @@ class FoodFragment : Fragment() {
     private var cholesterol: String = ""
     private var fiber: String = ""
     private var sugar: String = ""
+
+
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,7 +45,6 @@ class FoodFragment : Fragment() {
         _binding = FragmentFoodBinding.inflate(inflater, container, false)
         val view = binding.root
         val foodButton = binding.getFoodButton
-        val searchedProduct = binding.food
         val dataText = binding.foodData
         val nameText = binding.foodNames
 
@@ -46,10 +54,12 @@ class FoodFragment : Fragment() {
         )
 
 
+        val sharedViewModel =
+            ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
+
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-                sharedViewModel =
-                    ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
                 sharedViewModel.str = binding.food.query.toString()
                 if (sharedViewModel.str == "") {
                 } else {
@@ -71,12 +81,17 @@ class FoodFragment : Fragment() {
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
+                        binding.cal.setText(binding.cal.text.toString() + "\n\n$calories"+" g")
+                        binding.fat.setText(binding.fat.text.toString() + "\n\n$fat_total"+" g")
+                        binding.carb.setText(binding.carb.text.toString() + "\n\n$fiber"+" g")
+                        binding.protin.setText(binding.protin.text.toString() + "\n\n$protein"+" g")
+
                     }
                 }
             }
 
-
         }
+
         return view
     }
 }
