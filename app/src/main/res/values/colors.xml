@@ -8,5 +8,6 @@
     <color name="gray">#3C3D3D</color>
     <color name="bakgrund">#202121</color>
     <color name="toolbar_color">#3c3d3d</color>
+    <color name="whiteText">#e3e3e3</color>
 
 </resources>

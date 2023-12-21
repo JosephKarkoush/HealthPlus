@@ -21,12 +21,13 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/cardview_light_background"
             android:gravity="center"
             android:hint="@string/vikt"
             android:importantForAutofill="no"
             android:inputType="number"
+            android:backgroundTint="@color/cardview_light_background"
             android:textColorHint="@color/material_dynamic_neutral40"
+            android:textColor="@color/whiteText"
             android:textSize="24sp" />
 
         <TextView
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/kg_bmi"
-            android:textColor="#e3e3e3"
+            android:textColor="@color/whiteText"
             android:textSize="20sp" />
 
     </LinearLayout>
