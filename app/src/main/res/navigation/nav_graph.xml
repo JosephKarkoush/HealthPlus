@@ -2,4 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph.xml" />
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/bmiFragment"
+        android:name="com.example.healthplus.BmiFragment"
+        android:label="fragment_bmi"
+        tools:layout="@layout/fragment_bmi" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.healthplus.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/foodFragment"
+        android:name="com.example.healthplus.FoodFragment"
+        android:label="fragment_food"
+        tools:layout="@layout/fragment_food" />
+</navigation>
