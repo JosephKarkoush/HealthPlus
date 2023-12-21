@@ -14,7 +14,7 @@ import com.example.healthplus.data.Food
 class SharedViewModel : ViewModel() {
     var str = ""
     private val qRepository: FoodRepository = FoodRepository()
-    val food: LiveData<Food> = liveData(viewModelScope.coroutineContext) {
+    val food: LiveData<List<Food>> = liveData(viewModelScope.coroutineContext) {
         emit(qRepository.getStatements(str))
     }
 

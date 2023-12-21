@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface FoodApi {
     @GET("nutrition")
-    suspend fun getStatements(@Query("query") choice :String): Response<Food>
+    suspend fun getStatements(@Query("query") choice :String): Response<List<Food>>
 
 }

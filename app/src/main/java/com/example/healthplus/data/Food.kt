@@ -5,15 +5,15 @@ import com.squareup.moshi.Json
 data class Food(
         @Json(name = "name")
         val name: String,
-        val calories : Double,
-        val serving_size_g : Double,
-        val fat_total_g : Double,
-        val fat_saturated_g : Double,
-        val protein_g : Double,
-        val sodium_mg : Double,
-        val potassium_mg : Double,
-        val cholesterol_mg : Double,
-        val carbohydrates_total_g : Double,
-        val fiber_g : Double,
-        val sugar_g : Double
+        val calories : String,
+        val serving_size_g : String,
+        val fat_total_g : String,
+        val fat_saturated_g : String,
+        val protein_g : String,
+        val sodium_mg : String,
+        val potassium_mg : String,
+        val cholesterol_mg : String,
+        val carbohydrates_total_g : String,
+        val fiber_g : String,
+        val sugar_g : String
 )

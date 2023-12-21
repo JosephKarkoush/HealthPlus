@@ -18,16 +18,16 @@ class FoodFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var sharedViewModel: SharedViewModel
     private var name : String = ""
-    private var calories : Double = 0.0
-    private var serving_size : Double = 0.0
-    private var fat_total : Double = 0.0
-    private var fat_saturated : Double = 0.0
-    private var protein : Double = 0.0
-    private var sodium : Double = 0.0
-    private var potassium : Double = 0.0
-    private var cholesterol : Double = 0.0
-    private var fiber : Double = 0.0
-    private var sugar : Double = 0.0
+    private var calories : String = ""
+    private var serving_size : String = ""
+    private var fat_total : String = ""
+    private var fat_saturated : String = ""
+    private var protein : String = ""
+    private var sodium : String = ""
+    private var potassium : String = ""
+    private var cholesterol : String = ""
+    private var fiber : String = ""
+    private var sugar : String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,18 +43,25 @@ class FoodFragment : Fragment() {
         foodButton.setOnClickListener {
             lifecycleScope.launch {
                 sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-                val query = searchedProduct.query?.toString() ?: ""
-                sharedViewModel.str = query
+                sharedViewModel.str = binding.food.query.toString()
                 sharedViewModel.food.observe(viewLifecycleOwner) { food ->
-                    // Hantera matdata här
-                    // These variables shadow the class-level properties
-                    val name = food.name
-                    val calories = food.calories
+                    name = food.get(0).name
+                    calories = food.get(0).calories
+                    serving_size = food.get(0).serving_size_g
+                    fat_total = food.get(0).fat_total_g
+                    fat_saturated = food.get(0).fat_saturated_g
+                    protein = food.get(0).protein_g
+                    sodium = food.get(0).sodium_mg
+                    potassium = food.get(0).potassium_mg
+                    cholesterol = food.get(0).cholesterol_mg
+                    fiber = food.get(0).fiber_g
+                    sugar = food.get(0).sugar_g
+
+                    dataText.setText("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
+                            + "Protein: $protein" + "\n" + "\n"+ "Sodium: $sodium" + "\n" + "Potassium: $potassium" + "\n" + "Cholesterol: $cholesterol" + "\n" + "Fiber: $fiber" + "\n" + "Sugar: $sugar")
+
                 }
 
-                // These variables refer to the class-level properties
-                dataText.setText("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
-                        + "Protein: $protein" + "\n" + "Size: $serving_size" + "\n"+ "Sodium: $sodium" + "\n" + "Potassium: $potassium" + "\n" + "Cholesterol: $cholesterol" + "\n" + "Fiber: $fiber" + "\n" + "Sugar: $sugar")
             }
         }
 

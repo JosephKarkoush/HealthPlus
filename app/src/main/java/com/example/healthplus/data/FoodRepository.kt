@@ -37,11 +37,11 @@ class FoodRepository {
     private val foodApi: FoodApi by lazy {
         retrofit.create(FoodApi::class.java)
     }
-     suspend fun getStatements(str: String): Food {
+     suspend fun getStatements(str: String): List<Food> {
         val response = foodApi.getStatements("$str")
         return if (response.isSuccessful)
-            response.body() ?: Food("",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+            response.body() ?: listOf(Food("","","","","","","","","","","",""))
         else
-            Food("",0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+            listOf(Food("","","","","","","","","","","",""))
     }
 }
