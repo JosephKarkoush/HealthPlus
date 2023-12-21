@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#202121"
+    android:background="@color/bakgrund"
     android:orientation="vertical"
     tools:context=".BmiFragment">
 
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/kg_bmi"
-            android:textColor="@color/white"
+            android:textColor="#e3e3e3"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/cm_bmi"
-            android:textColor="@color/white"
+            android:textColor="#e3e3e3"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/year_bmi"
-            android:textColor="@color/white"
+            android:textColor="#e3e3e3"
             android:textSize="20sp" />
 
     </LinearLayout>
@@ -110,9 +110,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#21a6f3"
+            android:backgroundTint="#e3e3e3"
             android:text="@string/calculate"
-            android:textColor="#BBDEFB"
+            android:textColor="#202121"
             android:textSize="17sp" />
 
     </LinearLayout>
@@ -138,12 +138,14 @@
             app:sv_minSpeed="0"
             app:sv_speedTextFormat="INTEGER"
             app:sv_speedTextSize="30dp"
+            app:sv_speedTextColor="#e3e3e3"
             app:sv_speedometerMode="TOP"
             app:sv_speedometerWidth="50dp"
             app:sv_startDegree="180"
             app:sv_tickTextFormat="INTEGER"
             app:sv_unit="BMI"
             app:sv_unitSpeedInterval="15dp"
+            app:sv_unitTextColor="#e3e3e3"
             app:sv_unitTextSize="20dp"
             app:sv_unitUnderSpeedText="true"
             app:sv_withTremble="false" />
