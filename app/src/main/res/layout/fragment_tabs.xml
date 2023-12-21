@@ -22,13 +22,13 @@
             android:id="@+id/tab1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/bmi"
+            android:icon="@drawable/bmi_fit"
             android:text="BMI"/>
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tab2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/calorie"
+            android:icon="@drawable/meal"
             android:text="Calorie"/>
 
     </com.google.android.material.tabs.TabLayout>
