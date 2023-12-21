@@ -14,20 +14,20 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.launch
 
 class FoodFragment : Fragment() {
-    private var _binding : FragmentFoodBinding? = null
+    private var _binding: FragmentFoodBinding? = null
     private val binding get() = _binding!!
     private lateinit var sharedViewModel: SharedViewModel
-    private var name : String = ""
-    private var calories : String = ""
-    private var serving_size : String = ""
-    private var fat_total : String = ""
-    private var fat_saturated : String = ""
-    private var protein : String = ""
-    private var sodium : String = ""
-    private var potassium : String = ""
-    private var cholesterol : String = ""
-    private var fiber : String = ""
-    private var sugar : String = ""
+    private var name: String = ""
+    private var calories: String = ""
+    private var serving_size: String = ""
+    private var fat_total: String = ""
+    private var fat_saturated: String = ""
+    private var protein: String = ""
+    private var sodium: String = ""
+    private var potassium: String = ""
+    private var cholesterol: String = ""
+    private var fiber: String = ""
+    private var sugar: String = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,34 +38,45 @@ class FoodFragment : Fragment() {
         val foodButton = binding.getFoodButton
         val searchedProduct = binding.food
         val dataText = binding.foodData
+        val nameText = binding.foodNames
+
+        nameText.setText(
+            "Name: " + "\n" + "Calories: " + "\n" + "Size: " + "\n" + "Fat: " + "\n" + "Fat Saturated: " + "\n"
+                    + "Protein: " + "\n" + "Sodium: " + "\n" + "Potassium: " + "\n" + "Cholesterol: " + "\n" + "Fiber: " + "\n" + "Sugar: "
+        )
 
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-                sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+                sharedViewModel =
+                    ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
                 sharedViewModel.str = binding.food.query.toString()
-                sharedViewModel.food.observe(viewLifecycleOwner) { food ->
-                    name = food.get(0).name
-                    calories = food.get(0).calories
-                    serving_size = food.get(0).serving_size_g
-                    fat_total = food.get(0).fat_total_g
-                    fat_saturated = food.get(0).fat_saturated_g
-                    protein = food.get(0).protein_g
-                    sodium = food.get(0).sodium_mg
-                    potassium = food.get(0).potassium_mg
-                    cholesterol = food.get(0).cholesterol_mg
-                    fiber = food.get(0).fiber_g
-                    sugar = food.get(0).sugar_g
+                if (sharedViewModel.str == "") {
+                } else {
+                    sharedViewModel.food.observe(viewLifecycleOwner) { food ->
+                        name = food.get(0).name
+                        calories = food.get(0).calories
+                        serving_size = food.get(0).serving_size_g
+                        fat_total = food.get(0).fat_total_g
+                        fat_saturated = food.get(0).fat_saturated_g
+                        protein = food.get(0).protein_g
+                        sodium = food.get(0).sodium_mg
+                        potassium = food.get(0).potassium_mg
+                        cholesterol = food.get(0).cholesterol_mg
+                        fiber = food.get(0).fiber_g
+                        sugar = food.get(0).sugar_g
 
-                    dataText.setText("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
-                            + "Protein: $protein" + "\n" + "\n"+ "Sodium: $sodium" + "\n" + "Potassium: $potassium" + "\n" + "Cholesterol: $cholesterol" + "\n" + "Fiber: $fiber" + "\n" + "Sugar: $sugar")
+                        dataText.setText(
+                            "$name" + "\n" + "$calories" + "\n" + "$serving_size" + "\n" + "$fat_total" + "\n" + "$fat_saturated" + "\n"
+                                    + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
+                        )
 
+                    }
                 }
-
             }
+
+
         }
-
-
         return view
     }
 }

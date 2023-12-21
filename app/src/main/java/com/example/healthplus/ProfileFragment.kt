@@ -38,8 +38,8 @@ class ProfileFragment : Fragment() {
         val updateButton = binding.start
         val telephonyManager =
             requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val deviceImei = telephonyManager.imei
-        checkExist(deviceImei)
+        val deviceImei = "telephonyManager.imei"
+
 
         updateButton.setOnClickListener {
             val name = binding.name.text.toString()
@@ -57,7 +57,7 @@ class ProfileFragment : Fragment() {
 //dsdss
         return view
     }
-
+//TO DOOOO !!!!
     private fun checkExist(str: String) {
         myRef.child(str).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
