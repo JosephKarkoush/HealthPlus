@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Kg"
-            android:textColor="@color/NavajoWhite"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
 
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Years"
-            android:textColor="@color/NavajoWhite"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
             />
@@ -101,7 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cm"
-            android:textColor="@color/NavajoWhite"
+            android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
 

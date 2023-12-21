@@ -1,5 +1,6 @@
 package com.example.healthplus
 
+import TabsFragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -40,6 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         val builder = AppBarConfiguration.Builder(navController.graph)
         val appBarConfiguration = builder.build()
+
+
 
     }
 

@@ -38,32 +38,26 @@ class FoodFragment : Fragment() {
         val foodButton = binding.getFoodButton
         val searchedProduct = binding.food
         val dataText = binding.foodData
-        dataText.text = ("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
-        + "Protein: $protein" + "\n" + "Size: $serving_size" + "\n"+ "Sodium: $sodium" + "\n" + "Potassium: $potassium" + "\n" + "Cholesterol: $cholesterol" + "\n" + "Fiber: $fiber" + "\n" + "Sugar: $sugar")
 
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-            sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+                sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
                 val query = searchedProduct.query?.toString() ?: ""
                 sharedViewModel.str = query
                 sharedViewModel.food.observe(viewLifecycleOwner) { food ->
                     // Hantera matdata här
+                    // These variables shadow the class-level properties
                     val name = food.name
                     val calories = food.calories
                 }
 
-
-
-
-                dataText.text = ("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
+                // These variables refer to the class-level properties
+                dataText.setText("Name: $name" + "\n" +"Calories: $calories" + "\n" + "Size: $serving_size" + "\n" + "Fat: $fat_total" + "\n" + "Fat Saturated: $fat_saturated" + "\n"
                         + "Protein: $protein" + "\n" + "Size: $serving_size" + "\n"+ "Sodium: $sodium" + "\n" + "Potassium: $potassium" + "\n" + "Cholesterol: $cholesterol" + "\n" + "Fiber: $fiber" + "\n" + "Sugar: $sugar")
-
-
-
             }
-
         }
+
 
         return view
     }

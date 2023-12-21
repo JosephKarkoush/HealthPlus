@@ -1,47 +1,45 @@
-package com.example.healthplus
-
-import ViewPagerAdapter
+// ParentFragment.kt
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.healthplus.databinding.FragmentTabsBinding
+import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
+import com.example.healthplus.R
+import com.google.android.material.tabs.TabLayout
 
 class TabsFragment : Fragment() {
-    private var _binding : FragmentTabsBinding? = null
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentTabsBinding.inflate(inflater, container, false)
-        val view = binding.root
+        val view = inflater.inflate(R.layout.fragment_tabs, container, false)
 
-        setUpTabs()
+        val viewPager: ViewPager = view.findViewById(R.id.viewPager)
+        viewPager.adapter = VPAdapter(childFragmentManager)
+
+        val tabLayout: TabLayout = view.findViewById(R.id.tabLayout)
+        tabLayout.setupWithViewPager(viewPager)
+
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                // Handle tab selection
+                tab?.let {
+                    viewPager.currentItem = it.position
+                }
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // Handle tab unselection
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                // Handle tab reselection
+            }
+        })
 
         return view
-    }
-
-
-    private fun setUpTabs() {
-        val adapter = ViewPagerAdapter(supportFragmentManager = requireFragmentManager())
-
-        // Instantiate your fragments
-        val bmiFragment = BmiFragment()
-        val calCalculatorFragment = CalCalculator() // Assuming CalCalculatorFragment is your fragment
-
-        // Add fragments to the adapter
-        adapter.addFragment(bmiFragment, "BMI")
-        adapter.addFragment(calCalculatorFragment, "Calorie")
-
-        // Set up ViewPager and TabLayout
-        binding.viewPager.adapter = adapter
-        binding.tabs.setupWithViewPager(binding.viewPager)
-
-        // Set icons for tabs
-        binding.tabs.getTabAt(0)?.setIcon(R.drawable.bmi)
-        binding.tabs.getTabAt(1)?.setIcon(R.drawable.calorie)
     }
 }
