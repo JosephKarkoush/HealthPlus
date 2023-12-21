@@ -8,7 +8,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Response
 
-const val BASE_ENDPOINT_URL ="https://api.api-ninjas.com/v1"
+const val BASE_ENDPOINT_URL ="https://api.api-ninjas.com/v1/"
 const val API_KEY = "VIA4++Z6JrjPomS+N/LZHw==3e1GXcAKfgNj5Psd" // Ersätt med din API key
 
 class FoodRepository {

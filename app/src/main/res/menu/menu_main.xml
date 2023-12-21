@@ -5,6 +5,17 @@
             android:id="@+id/tabsFragment"
             android:icon="@android:drawable/ic_dialog_info"
             android:title="Tabs" />
+
+        <item
+            android:id="@+id/bmiFragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="bmi calculator" />
+
+        <item
+            android:id="@+id/foodFragment"
+            android:icon="@android:drawable/ic_dialog_info"
+            android:title="Food lookup" />
+
     </group>
 
 </menu>
