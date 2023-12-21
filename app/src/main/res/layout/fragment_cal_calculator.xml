@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@color/bakgrund"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -28,6 +28,37 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textViewYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/y"
+        android:translationY="16dp"
+        android:textColor="#FFFFFFFF"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextYear"
+        app:layout_constraintStart_toEndOf="@+id/editTextYear"
+        app:layout_constraintTop_toTopOf="@+id/editTextYear" />
+
+
+
+    <!-- CM -->
+
+    <EditText
+        android:id="@+id/editTextCM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:hint="@string/length"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#FFFFFFFF"
+        android:translationY="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/textViewCM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,8 +70,8 @@
         app:layout_constraintStart_toEndOf="@+id/editTextCM"
         app:layout_constraintTop_toTopOf="@+id/editTextCM" />
 
-    <!-- CM -->
 
+    <!-- KG -->
     <EditText
         android:id="@+id/editTextKG"
         android:layout_width="wrap_content"
@@ -57,28 +88,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editTextCM"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:autofillHints=""
-        android:hint="@string/length"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        android:textColorHint="#FFFFFFFF"
-        android:translationY="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.243"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- KG -->
-
     <TextView
         android:id="@+id/textViewKG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:text="@string/kg"
         android:translationY="16dp"
         android:textColor="#FFFFFFFF"
@@ -86,50 +100,27 @@
         app:layout_constraintStart_toEndOf="@+id/editTextKG"
         app:layout_constraintTop_toTopOf="@+id/editTextKG" />
 
-    <TextView
-        android:id="@+id/textViewYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/y"
-        android:translationY="16dp"
-        android:textColor="#FFFFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextYear"
-        app:layout_constraintStart_toEndOf="@+id/editTextYear"
-        app:layout_constraintTop_toTopOf="@+id/editTextYear" />
 
-    <!-- Spinner -->
 
-    <!-- daily cals -->
-    <Spinner
-        android:id="@+id/spinnerOptions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:entries="@array/rutine"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextKG" />
 
     <!-- button -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_calculator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@android:drawable/ic_media_play"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/baseline_calculate_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerOptions" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextKG" />
 
+    <!-- Daily Cal -->
     <TextView
         android:id="@+id/dailyCaloriesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="508dp"
+        android:layout_marginBottom="250dp"
         android:text="@string/daily_calories"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -137,9 +128,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- BorderLine -->
+    <!-- BorderLineTop -->
     <View
         android:id="@+id/borderLine"
         android:layout_width="0dp"
@@ -150,8 +141,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dailyCaloriesText" />
 
-    <!-- BorderLine -->
-
+    <!-- BorderLineBottom -->
 
     <View
         android:id="@+id/borderLine2"
@@ -163,6 +153,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fatLabel" />
+
     <!-- Protein Label -->
 
     <TextView
@@ -178,6 +169,7 @@
         android:layout_marginTop="8dp"/>
 
     <!-- Carbs Label -->
+
     <TextView
         android:id="@+id/carbsLabel"
         android:layout_width="wrap_content"
@@ -191,6 +183,7 @@
         android:layout_marginTop="8dp"/>
 
     <!-- Fat Label -->
+
     <TextView
         android:id="@+id/fatLabel"
         android:layout_width="wrap_content"
