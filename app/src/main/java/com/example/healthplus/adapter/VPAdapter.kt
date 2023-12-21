@@ -16,7 +16,7 @@ class VPAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm, BEHAVIOR_RESUME_
     }
 
     override fun getCount(): Int {
-        return 3 // Number of tabs
+        return 2 // Number of tabs
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
