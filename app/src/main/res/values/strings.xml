@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">HealthPlus</string>
-    <string name="EnterInfoYear">"    "</string>
-    <string name="EnterInfoKG">"    "</string>
-    <string name="EnterInfoCM">"    "</string>
+    <string name="EnterInfoYear">""</string>
+    <string name="EnterInfoKG">""</string>
+    <string name="EnterInfoCM">""</string>
     <string name="daily_calories">Daily Calories: x</string>
     <string name="length">Length</string>
     <string name="weight">Weight</string>
