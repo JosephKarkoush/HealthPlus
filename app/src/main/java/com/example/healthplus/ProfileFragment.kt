@@ -1,5 +1,6 @@
 package com.example.healthplus
 
+import android.annotation.SuppressLint
 import android.content.Context.TELEPHONY_SERVICE
 import android.os.Bundle
 import android.telephony.TelephonyManager
@@ -28,6 +29,7 @@ class ProfileFragment : Fragment() {
         Firebase.database("https://healthplus-25c48-default-rtdb.europe-west1.firebasedatabase.app/")
     val myRef = database.getReference("users")
 
+    @SuppressLint("HardwareIds")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +40,8 @@ class ProfileFragment : Fragment() {
         val updateButton = binding.start
         val telephonyManager =
             requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val deviceImei = "telephonyManager.imei"
+        val deviceImei = telephonyManager.deviceId
+        checkExist(deviceImei)
 
 
         updateButton.setOnClickListener {
@@ -62,9 +65,6 @@ class ProfileFragment : Fragment() {
         myRef.child(str).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    // User exists in the database
-                    // Handle the case where the user exists
-                    // For example, update the user's information
                     val user = snapshot.getValue(User::class.java)
                     if (user != null) {
                         binding.name.setText(user.name.toString())
@@ -78,9 +78,7 @@ class ProfileFragment : Fragment() {
 
                     }
                 } else {
-                    // User does not exist in the database
-                    // Handle the case where the user does not exist
-                    // e.g., show a message, prompt the user to register, etc.
+                    //inget händer
                 }
             }
 
@@ -90,7 +88,7 @@ class ProfileFragment : Fragment() {
     }
 
 
-    fun updateUser(
+    private fun updateUser(
         deviceImei: String,
         name: String,
         gender: String,
