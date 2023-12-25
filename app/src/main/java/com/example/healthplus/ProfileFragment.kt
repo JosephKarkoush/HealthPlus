@@ -1,21 +1,18 @@
 package com.example.healthplus
 
+import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Context.TELEPHONY_SERVICE
+import android.content.Context
 import android.os.Bundle
-import android.telephony.TelephonyManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
 import com.example.healthplus.databinding.FragmentProfileBinding
 import com.google.firebase.Firebase
 import com.google.firebase.database.database
-import android.provider.Settings
-import android.content.Context
 import android.os.Build
-import android.util.Log
+import android.provider.Settings
 import androidx.annotation.RequiresApi
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -28,6 +25,7 @@ class ProfileFragment : Fragment() {
     val database =
         Firebase.database("https://healthplus-25c48-default-rtdb.europe-west1.firebasedatabase.app/")
     val myRef = database.getReference("users")
+    var deviceId = ""
 
     @SuppressLint("HardwareIds")
     @RequiresApi(Build.VERSION_CODES.O)
@@ -38,53 +36,39 @@ class ProfileFragment : Fragment() {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
         val updateButton = binding.start
-        val telephonyManager =
-            requireActivity().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
-        val deviceImei = telephonyManager.deviceId
-        checkExist(deviceImei)
+        val manRadio = binding.radioButton1
+        val womanRadio = binding.radioButton2
+        val image = binding.image
+        image.setBackgroundResource(R.drawable.man)
+        val androidId = getAndroidId(requireContext())
+
+        manRadio.setOnClickListener {
+            val image = binding.image
+            image.setBackgroundResource(R.drawable.man)
+        }
+
+        womanRadio.setOnClickListener {
+            val image = binding.image
+            image.setBackgroundResource(R.drawable.woman)
+
+        }
 
 
         updateButton.setOnClickListener {
             val name = binding.name.text.toString()
             var gender = ""
-            if(binding.radioButton1.isChecked)
+            if (binding.radioButton1.isChecked)
                 gender = "Male"
             else gender = "Female"
             val age = binding.age.text.toString()
             val weight = binding.weight.text.toString()
             val height = binding.height.text.toString()
-            updateUser(deviceImei, name, gender, age, weight, height)
+            updateUser(androidId, name, gender, age, weight, height)
+            retrieveUserData(androidId)
 
         }
-
-//dsdss
+        retrieveUserData(androidId)
         return view
-    }
-//TO DOOOO !!!!
-    private fun checkExist(str: String) {
-        myRef.child(str).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    val user = snapshot.getValue(User::class.java)
-                    if (user != null) {
-                        binding.name.setText(user.name.toString())
-                        binding.age.setText(user.age.toString())
-                        binding.height.setText(user.height.toString())
-                        binding.weight.setText(user.weight.toString())
-                        if(user.gender == "Male")
-                            binding.radioButton1.isChecked = true
-                        else if(user.gender == "Female")
-                            binding.radioButton2.isChecked = true
-
-                    }
-                } else {
-                    //inget händer
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
     }
 
 
@@ -101,5 +85,47 @@ class ProfileFragment : Fragment() {
     }
 
 
+
+    private fun retrieveUserData(deviceImei: String) {
+        myRef.child(deviceImei).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    val user = dataSnapshot.getValue(User::class.java)
+                    // Update UI with the retrieved user data
+                    updateUI(user)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+            }
+        })
+    }
+
+    private fun updateUI(user: User?) {
+        // Update UI elements with user data
+        if (user != null) {
+            binding.name.setText(user.name)
+            binding.age.setText(user.age)
+            binding.weight.setText(user.weight)
+            binding.height.setText(user.height)
+            if(user.gender == "Male") {
+                binding.radioButton1.isChecked = true
+                binding.radioButton2.isChecked = false
+                binding.image.setBackgroundResource(R.drawable.man)
+            } else {
+                binding.radioButton1.isChecked = false
+                binding.radioButton2.isChecked = true
+                binding.image.setBackgroundResource(R.drawable.woman)
+            }
+            // Update other UI elements as needed
+        }
+    }
+
+
+
+    private fun getAndroidId(context: Context): String {
+        return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
+    }
 
 }

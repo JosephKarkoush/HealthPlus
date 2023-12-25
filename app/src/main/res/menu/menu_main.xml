@@ -3,18 +3,21 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profileFragment"
-            android:icon="@android:drawable/ic_dialog_info"
+            android:icon="@drawable/profile"
             android:title="Profile" />
 
-        <item
-            android:id="@+id/bmiFragment"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="bmi calculator" />
 
         <item
             android:id="@+id/foodFragment"
-            android:icon="@android:drawable/ic_dialog_info"
-            android:title="Food lookup" />
+            android:icon="@drawable/foodlookup"
+            android:title="Food Lookup" />
+
+        <item
+            android:id="@+id/bmiFragment"
+            android:icon="@drawable/baseline_calculate_24"
+            android:title="Calculator" />
+
+
 
     </group>
 
