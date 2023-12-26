@@ -141,17 +141,31 @@
             app:sv_minSpeed="0"
             app:sv_speedTextFormat="INTEGER"
             app:sv_speedTextSize="30dp"
-            app:sv_speedTextColor="#e3e3e3"
+            app:sv_speedTextColor="@color/whiteText"
             app:sv_speedometerMode="TOP"
             app:sv_speedometerWidth="50dp"
             app:sv_startDegree="180"
             app:sv_tickTextFormat="INTEGER"
             app:sv_unit="BMI"
             app:sv_unitSpeedInterval="15dp"
-            app:sv_unitTextColor="#e3e3e3"
+            app:sv_unitTextColor="@color/whiteText"
             app:sv_unitTextSize="20dp"
             app:sv_unitUnderSpeedText="true"
+            app:sv_textSize="13dp"
+            app:sv_marksNumber="0"
+            app:sv_textColor="@color/whiteText"
+            app:sv_withIndicatorLight="true"
+            app:sv_indicatorLightColor="@color/whiteText"
             app:sv_withTremble="false" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_marginTop="50dp"
+            android:textSize="30sp"
+            android:layout_gravity="center|top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
     </FrameLayout>
 
 

@@ -14,6 +14,7 @@ import android.widget.PopupWindow
 import androidx.fragment.app.Fragment
 import com.example.healthplus.databinding.FragmentBmiBinding
 import com.github.anastr.speedviewlib.SpeedView
+import com.github.anastr.speedviewlib.components.Section
 import com.github.anastr.speedviewlib.components.Style
 import com.google.firebase.Firebase
 import com.google.firebase.database.DataSnapshot
@@ -44,17 +45,28 @@ class BmiFragment : Fragment() {
         val ageField = binding.ageBmi
         val button = binding.buttonBmi
         val meter = binding.speedView
+        val textview = binding.textView
         val androidId = getAndroidId(requireContext())
         retrieveUserData(androidId)
 
-        meter.makeSections(3, Color.BLACK, Style.BUTT)
-        meter.sections[0].color = Color.parseColor("#21a6f3")
-        meter.sections[1].color = Color.parseColor("#40bc64")
-        meter.sections[2].color = Color.parseColor("#fc5448")
+        meter.clearSections()
+        val section1 = Section(0f, .46f, Color.parseColor("#2175f3"),meter.speedometerWidth ,Style.BUTT)
+        val section2 = Section(.46f, .62f, Color.parseColor("#40bc64"),meter.speedometerWidth ,Style.BUTT)
+        val section3 = Section(.62f, 1f, Color.parseColor("#fc5448"),meter.speedometerWidth ,Style.BUTT)
+
+        meter.addSections(section1)
+        meter.addSections(section2)
+        meter.addSections(section3)
+
+        meter.tickNumber = 5
+        meter.ticks = arrayListOf(.03f, .46f, .62f, .97f)
+
+//        meter.addSections(
+//            Section(0f, .462f, Color.parseColor("#2175f3"))
+//            , Section(.462f, .624f, Color.parseColor("#40bc64"))
+//            , Section(.624f, .1f, Color.parseColor("#fc5448")))
 
         button.setOnClickListener {
-
-
             try {
                 var weight = weightField.text.toString()
                 var height = heightField.text.toString()
@@ -63,6 +75,29 @@ class BmiFragment : Fragment() {
 
                 var bmi = weight.toFloat() / (heightInCm.pow(2))
                 meter.speedTo(bmi)
+
+                if (bmi >= 18.5 && bmi <= 24.9){
+                    textview.text = "Normal"
+                    textview.setTextColor(Color.parseColor("#40bc64"))
+                }
+                if (bmi >= 17 && bmi <= 18.4){
+                    textview.text = "Underweight"
+                    textview.setTextColor(Color.parseColor("#21a6f3"))
+                }
+                if (bmi <= 16.9){
+                    textview.text = "Severely underweight"
+                    textview.setTextColor(Color.parseColor("#2175f3"))
+                }
+                if (bmi >= 25 && bmi <= 29.9){
+                    textview.text = "Overweight"
+                    textview.setTextColor(Color.parseColor("#fc5448"))
+                }
+
+                if (bmi >= 30) {
+                    textview.text = "Obese"
+                    textview.setTextColor(Color.parseColor("#f53022"))
+                }
+
             } catch (e: Exception) {
                 showPopup(it)
             }

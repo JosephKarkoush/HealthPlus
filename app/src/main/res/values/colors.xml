@@ -9,5 +9,10 @@
     <color name="bakgrund">#202121</color>
     <color name="toolbar_color">#3c3d3d</color>
     <color name="whiteText">#FFFFFF</color>
+    <color name="underweight">#21a6f3</color>
+    <color name="severelyunderweight">#2175f3</color>
+    <color name="overweight">#fc5448</color>
+    <color name="obese">#f53022</color>
+    <color name="normalbmi">#40bc64</color>
 
 </resources>
