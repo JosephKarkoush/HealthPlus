@@ -19,8 +19,6 @@
     <string name="height_hint">Height</string>
     <string name="age_hint">Age</string>
     <string name="Change">Change</string>
-    <string name="vikt">Vikt</string>
-    <string name="length_bmi">Length</string>
     <string name="age">Age</string>
     <string name="kg_bmi">Kg</string>
     <string name="cm_bmi">Cm</string>
