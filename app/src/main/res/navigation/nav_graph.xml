@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/profileFragment">
+    app:startDestination="@id/calorieFragment">
 
     <fragment
         android:id="@+id/bmiFragment"
@@ -20,4 +20,9 @@
         android:name="com.example.healthplus.FoodFragment"
         android:label="fragment_food"
         tools:layout="@layout/fragment_food" />
+    <fragment
+        android:id="@+id/calorieFragment"
+        android:name="com.example.healthplus.CalorieFragment"
+        android:label="fragment_calorie"
+        tools:layout="@layout/fragment_calorie" />
 </navigation>

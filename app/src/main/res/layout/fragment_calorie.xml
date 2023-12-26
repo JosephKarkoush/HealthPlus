@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
     android:orientation="vertical"
-    tools:context=".BmiFragment">
+    tools:context=".CalorieFragment">
+
+
+
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/weight_bmi"
+            android:id="@+id/weight"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -48,7 +53,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/height_bmi"
+            android:id="@+id/height"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -79,7 +84,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@+id/age_bmi"
+            android:id="@+id/age"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/whiteText"
@@ -101,6 +106,41 @@
 
     </LinearLayout>
 
+
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+        <!-- Radio button 1 -->
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:layout_marginEnd="10dp"
+            android:text="Male"
+            android:checked="true" />
+
+        <!-- Radio button 2 -->
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Female" />
+
+        <!-- Add more radio buttons as needed -->
+
+    </RadioGroup>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -111,7 +151,7 @@
         <RelativeLayout
             android:layout_width="1dp"
             android:layout_weight="1"
-            android:id="@+id/buttonBmi"
+            android:id="@+id/buttonCal"
             android:layout_height="match_parent">
 
             <RelativeLayout
@@ -160,53 +200,100 @@
 
     </LinearLayout>
 
-    <FrameLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <!-- Other views can be added here -->
-
-        <com.github.anastr.speedviewlib.SpeedView
-            android:id="@+id/speedView"
-            android:layout_width="350dp"
-            android:layout_height="350dp"
-            android:layout_gravity="bottom|center"
-            app:sv_centerCircleColor="#21a6f3"
-            app:sv_centerCircleRadius="11dp"
-            app:sv_endDegree="360"
-            app:sv_indicator="TriangleIndicator"
-            app:sv_indicatorColor="#21a6f3"
-            app:sv_indicatorWidth="15dp"
-            app:sv_maxSpeed="40"
-            app:sv_minSpeed="0"
-            app:sv_speedTextFormat="INTEGER"
-            app:sv_speedTextSize="30dp"
-            app:sv_speedTextColor="@color/whiteText"
-            app:sv_speedometerMode="TOP"
-            app:sv_speedometerWidth="50dp"
-            app:sv_startDegree="180"
-            app:sv_tickTextFormat="INTEGER"
-            app:sv_unit="BMI"
-            app:sv_unitSpeedInterval="15dp"
-            app:sv_unitTextColor="@color/whiteText"
-            app:sv_unitTextSize="20dp"
-            app:sv_unitUnderSpeedText="true"
-            app:sv_textSize="13dp"
-            app:sv_marksNumber="0"
-            app:sv_textColor="@color/whiteText"
-            app:sv_withIndicatorLight="true"
-            app:sv_indicatorLightColor="@color/whiteText"
-            app:sv_withTremble="false" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_marginTop="50dp"
-            android:textSize="30sp"
-            android:layout_gravity="center|top"
+            android:id="@+id/calorieText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="" />
-    </FrameLayout>
+            android:text=""
+            android:layout_gravity="center"
+            android:textColor="@color/whiteText"
+            android:textSize="30sp" />
+
+
+        <TextView
+            android:id="@+id/daily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:textColor="#40bc64"
+            android:textSize="30sp" />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Macros"
+            android:layout_gravity="center"
+            android:textColor="@color/whiteText"
+            android:textSize="30sp" />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="30dp"
+        android:background="@drawable/rouded_corners"
+        android:orientation="horizontal">
+
+
+
+
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:paddingStart="25dp"
+            android:text="Protein: \nCarb: \nFat: \n"
+            android:layout_height="wrap_content"
+            android:textColor="@color/whiteText"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/macros"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:paddingTop="15dp"
+            android:paddingStart="15dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:textColor="@color/whiteText"
+            android:textSize="20sp" />
+
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

@@ -14,9 +14,11 @@ import com.google.firebase.database.database
 import android.os.Build
 import android.provider.Settings
 import androidx.annotation.RequiresApi
+import androidx.core.view.isVisible
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.delay
 
 
 class ProfileFragment : Fragment() {
@@ -65,6 +67,7 @@ class ProfileFragment : Fragment() {
             val height = binding.height.text.toString()
             updateUser(androidId, name, gender, age, weight, height)
             retrieveUserData(androidId)
+            binding.greecheck.isVisible = true
 
         }
         retrieveUserData(androidId)
@@ -127,5 +130,9 @@ class ProfileFragment : Fragment() {
     private fun getAndroidId(context: Context): String {
         return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
     }
+
+
+
+
 
 }
