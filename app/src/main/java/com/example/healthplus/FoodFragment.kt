@@ -57,14 +57,15 @@ class FoodFragment : Fragment() {
 
 
 
-
+        val sharedViewModel =
+            ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-                val sharedViewModel =
-                    ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
-                sharedViewModel.str = binding.food.query.toString()
-                if (sharedViewModel.str != "") {
+
+                sharedViewModel.setQueryString(binding.food.query.toString())
+
+
                     sharedViewModel.food.observe(viewLifecycleOwner) { food ->
                         name = food.get(0).name
                         calories = food.get(0).calories
@@ -84,15 +85,12 @@ class FoodFragment : Fragment() {
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
-                        binding.cal.setText(binding.cal.text.toString() + "\n\n$calories"+" g")
-                        binding.fat.setText(binding.fat.text.toString() + "\n\n$fat_total"+" g")
-                        binding.carb.setText(binding.carb.text.toString() + "\n\n$carb"+" g")
-                        binding.protin.setText(binding.protin.text.toString() + "\n\n$protein"+" g")
+                        binding.cal.setText("Cal." + "\n\n$calories"+" kcal")
+                        binding.fat.setText("Fat" + "\n\n$fat_total"+" g")
+                        binding.carb.setText("Carb." + "\n\n$carb"+" g")
+                        binding.protin.setText("Protein" + "\n\n$protein"+" g")
 
                     }
-                } else {
-                    //Gör inget
-                }
             }
 
         }

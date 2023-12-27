@@ -7,16 +7,24 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import androidx.lifecycle.switchMap
 import androidx.lifecycle.viewModelScope
 import com.example.healthplus.data.Food
 
 
 class SharedViewModel : ViewModel() {
-    var str = ""
+    private val _str = MutableLiveData<String>()
+    val str: LiveData<String> get() = _str
+
     private val qRepository: FoodRepository = FoodRepository()
-    val food: LiveData<List<Food>> = liveData(viewModelScope.coroutineContext) {
-        emit(qRepository.getStatements(str))
+
+    val food: LiveData<List<Food>> = str.switchMap { queryString ->
+        liveData(viewModelScope.coroutineContext) {
+            emit(qRepository.getStatements(queryString))
+        }
     }
 
-    // Ingen särskild funktion för att hämta LiveData behövs
+    fun setQueryString(query: String) {
+        _str.value = query
+    }
 }

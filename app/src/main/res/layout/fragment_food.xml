@@ -52,7 +52,7 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:background="#3c3d3d"
-                android:text="Calorie"
+                android:text="Cal."
                 android:gravity="center|top"
                 android:textColor="@color/whiteText"
                 android:textSize="25dp" />
