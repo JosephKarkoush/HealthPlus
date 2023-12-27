@@ -1,6 +1,7 @@
 package com.example.healthplus
 
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import com.example.healthplus.databinding.FragmentFoodBinding
 import android.widget.Button
 import android.widget.EditText
+import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,9 +67,11 @@ class FoodFragment : Fragment() {
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-
-                sharedViewModel.setQueryString(binding.food.query.toString())
-
+                if(binding.food.query.toString() == "") {
+                    showPopup(it)
+                }else{
+                    sharedViewModel.setQueryString(binding.food.query.toString())
+                }
 
                     sharedViewModel.food.observe(viewLifecycleOwner) { food ->
                         name = food.get(0).name
@@ -107,5 +111,31 @@ class FoodFragment : Fragment() {
         }
 
         return view
+    }
+
+
+
+    private fun showPopup(view: View) {
+        // Inflate the popup_layout.xml
+        val inflater = LayoutInflater.from(requireContext())
+        val popupView: View = inflater.inflate(R.layout.popup_layout, null)
+
+        // Create the popup window
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
+
+        // Set a dismiss listener to close the popup when the "Close Popup" button is clicked
+        val btnClosePopup: Button = popupView.findViewById(R.id.btnClosePopup)
+        btnClosePopup.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        // Show the popup at the center of the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
     }
 }
