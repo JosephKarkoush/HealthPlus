@@ -102,10 +102,10 @@
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
                 android:text="Cal."
-                android:gravity="center|top"
+                android:gravity="center"
                 android:background="@drawable/sharp_corners"
                 android:textColor="@color/whiteText"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
 
 
             <TextView
@@ -116,9 +116,9 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/sharp_corners"
                 android:text="Fat"
-                android:gravity="center|top"
+                android:gravity="center"
                 android:textColor="@color/whiteText"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
 
 
         </LinearLayout>
@@ -141,9 +141,9 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/sharp_corners"
                 android:text="Carb."
-                android:gravity="center|top"
+                android:gravity="center"
                 android:textColor="@color/whiteText"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
 
             <TextView
                 android:id="@+id/protin"
@@ -153,9 +153,9 @@
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/sharp_corners"
                 android:text="Protien"
-                android:gravity="center|top"
+                android:gravity="center"
                 android:textColor="@color/whiteText"
-                android:textSize="25dp" />
+                android:textSize="22dp" />
 
 
         </LinearLayout>
