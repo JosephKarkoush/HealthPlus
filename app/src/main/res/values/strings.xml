@@ -6,12 +6,10 @@
     <string name="daily_calories">Daily Calories: x</string>
     <string name="length">Length</string>
     <string name="weight">Weight</string>
-    <string name="year">Year</string>
     <string name="protein">Protein: x</string>
     <string name="carbs">Carbs: x</string>
     <string name="fat">Fat: x</string>
-    <string name="cm">CM</string>
-    <string name="kg">KG</string>
+
     <string name="y">Y</string>
 
     <string name="spinner_name">work_rutine\n</string>
@@ -19,10 +17,10 @@
     <string name="height_hint">Height</string>
     <string name="age_hint">Age</string>
     <string name="Change">Change</string>
-    <string name="age">Age</string>
-    <string name="kg_bmi">Kg</string>
-    <string name="cm_bmi">Cm</string>
-    <string name="year_bmi">Year</string>
+    <string name="age">Age </string>
+    <string name="kg">"Kg  "</string>
+    <string name="cm">"Cm  "</string>
+    <string name="year">Year</string>
     <string name="calculate">Calculate</string>
     <string name="textruta_bmi">Very Severely Underweight ≤ 15.9 \n Severely Underweight 16.0 - 16.9 \n Underweight 17.0 - 18.4 \n Normal 18.5 - 24.9 \n Overweight 25.0 - 29.9 \n Obese Class I 30.0 - 34.9 \n Obese Class II 35.0 - 39.9</string>
     <!-- TODO: Remove or change this placeholder text -->

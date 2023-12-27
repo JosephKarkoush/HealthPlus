@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
     android:orientation="vertical"
-    android:padding="16dp"
+
     tools:context=".FoodFragment">
 
 
@@ -13,7 +14,10 @@
         android:id="@+id/food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_gravity="center"
+        android:maxWidth="500dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         android:iconifiedByDefault="false"
         android:inputType="text"
         android:padding="4dp"
@@ -23,73 +27,119 @@
         android:textColor="@color/whiteText"/>
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:backgroundTint="@color/cardview_light_background"
-        android:id="@+id/get_food_button"
-        android:textSize="18dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:padding="16dp"
-        android:text="Get Info" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
+        <RelativeLayout
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:id="@+id/getFoodButton"
+            android:layout_height="match_parent">
 
-        <TableRow
+            <RelativeLayout
+                android:layout_width="200dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_button"
+                android:layout_height="60dp">
+
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_button"
+                    app:tint="#fff"
+                    android:layout_margin="3dp"/>
+
+                <RelativeLayout
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/bg_button">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/search_icon"
+                        android:padding="10dp"
+                        app:tint="#fff">
+                    </ImageView>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="65dp"
+                    android:gravity="center"
+                    android:text="Search"
+                    android:textColor="#000"
+                    android:textSize="20sp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/firstRow"
+            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:layout_marginTop="20dp"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/cal"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:background="#3c3d3d"
                 android:text="Cal."
                 android:gravity="center|top"
+                android:background="@drawable/sharp_corners"
                 android:textColor="@color/whiteText"
                 android:textSize="25dp" />
 
 
             <TextView
                 android:id="@+id/fat"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:background="#3c3d3d"
+                android:background="@drawable/sharp_corners"
                 android:text="Fat"
                 android:gravity="center|top"
                 android:textColor="@color/whiteText"
                 android:textSize="25dp" />
 
 
-        </TableRow>
+        </LinearLayout>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <TableRow
+        <LinearLayout
+            android:id="@+id/secondRow"
+            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
             android:layout_marginTop="5dp"
             android:gravity="center">
 
             <TextView
                 android:id="@+id/carb"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:background="#3c3d3d"
+                android:background="@drawable/sharp_corners"
                 android:text="Carb."
                 android:gravity="center|top"
                 android:textColor="@color/whiteText"
@@ -97,28 +147,25 @@
 
             <TextView
                 android:id="@+id/protin"
-                android:layout_width="200dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="100dp"
                 android:layout_marginLeft="5dp"
-                android:background="#3c3d3d"
+                android:background="@drawable/sharp_corners"
                 android:text="Protien"
                 android:gravity="center|top"
                 android:textColor="@color/whiteText"
                 android:textSize="25dp" />
 
 
-        </TableRow>
+        </LinearLayout>
 
-
-
-
-
-
-    </LinearLayout>
 
 
 
     <LinearLayout
+        android:id="@+id/datatable"
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -133,10 +180,10 @@
             android:id="@+id/foodNames"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:paddingTop="15dp"
+            android:paddingVertical="15dp"
             android:paddingStart="25dp"
             android:text="Name: \nCalories: \nSize: \nFat: \nFat Saturated: \nProtein: \nSodium: \nPotassium: \nCholesterol: \nFiber: \nSugar:"
-            android:layout_height="300dp"
+            android:layout_height="wrap_content"
             android:textColor="@color/whiteText"
             android:textSize="20sp" />
 
@@ -145,10 +192,9 @@
             android:id="@+id/foodData"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:paddingTop="15dp"
-            android:paddingStart="15dp"
-            android:layout_height="300dp"
-            android:layout_gravity="left"
+            android:paddingVertical="15dp"
+            android:paddingStart="20dp"
+            android:layout_height="wrap_content"
             android:textColor="@color/whiteText"
             android:textSize="20sp" />
 

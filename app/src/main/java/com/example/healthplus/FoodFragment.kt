@@ -49,6 +49,9 @@ class FoodFragment : Fragment() {
         val foodButton = binding.getFoodButton
         val dataText = binding.foodData
         val nameText = binding.foodNames
+        val firstRow = binding.firstRow
+        val secondRow = binding.secondRow
+        val dataTable = binding.datatable
 
         nameText.setText(
             "Name: " + "\n" + "Calories: " + "\n" + "Size: " + "\n" + "Fat: " + "\n" + "Fat Saturated: " + "\n"
@@ -80,6 +83,9 @@ class FoodFragment : Fragment() {
                         sugar = food.get(0).sugar_g
                         carb = food.get(0).carbohydrates_total_g
 
+                        if (name == ""){}
+                        else{
+
                         dataText.setText(
                             "$name" + "\n" + "$calories" + "\n" + "$serving_size" + "\n" + "$fat_total" + "\n" + "$fat_saturated" + "\n"
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
@@ -89,6 +95,11 @@ class FoodFragment : Fragment() {
                         binding.fat.setText("Fat" + "\n\n$fat_total"+" g")
                         binding.carb.setText("Carb." + "\n\n$carb"+" g")
                         binding.protin.setText("Protein" + "\n\n$protein"+" g")
+
+                            firstRow.visibility = View.VISIBLE
+                            secondRow.visibility = View.VISIBLE
+                            dataTable.visibility = View.VISIBLE
+                            }
 
                     }
             }

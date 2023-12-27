@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single"
+        >
         <item
             android:id="@+id/profileFragment"
             android:icon="@drawable/profile"
-            android:title="Profile" />
+            android:title="Profile"
+            app:showAsAction="always"/>
 
 
         <item
             android:id="@+id/foodFragment"
             android:icon="@drawable/foodlookup"
-            android:title="Food Lookup" />
+            android:title="Food lookup"
+            app:showAsAction="always"/>
 
         <item
             android:id="@+id/bmiFragment"
             android:icon="@drawable/baseline_calculate_24"
-            android:title="Calculator" />
+            android:title="BMI"
+            app:showAsAction="always"/>
 
+        <item
+            android:id="@+id/calorieFragment"
+            android:icon="@drawable/baseline_calculate_24"
+            android:title="Calories"
+            app:showAsAction="always"/>
 
 
     </group>

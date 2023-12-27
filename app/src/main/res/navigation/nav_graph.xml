@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/bmiFragment"
         android:name="com.example.healthplus.BmiFragment"
-        android:label="fragment_bmi"
+        android:label="BMI Calculator"
         tools:layout="@layout/fragment_bmi" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.healthplus.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/foodFragment"
         android:name="com.example.healthplus.FoodFragment"
-        android:label="fragment_food"
+        android:label="Food Lookup"
         tools:layout="@layout/fragment_food" />
     <fragment
         android:id="@+id/calorieFragment"
         android:name="com.example.healthplus.CalorieFragment"
-        android:label="fragment_calorie"
+        android:label="Calorie Calculator"
         tools:layout="@layout/fragment_calorie" />
 </navigation>
