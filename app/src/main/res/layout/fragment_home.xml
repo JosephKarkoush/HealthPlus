@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bakgrund"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="16dp">
+
+
+
+    <TextView
+        android:id="@+id/numberOfUsers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="#6750A4"
+        android:textSize="100sp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Using"
+        android:textColor="#21a6f3"
+        android:textSize="120sp"
+        android:fontFamily="@font/branda"
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="This"
+        android:textColor="#40bc64"
+        android:textSize="120sp"
+        android:fontFamily="@font/branda"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="App"
+        android:textColor="#fc5448"
+        android:textSize="120sp"
+        android:fontFamily="@font/branda"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.healthplus
 
-import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
@@ -18,7 +17,6 @@ import androidx.core.view.isVisible
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import kotlinx.coroutines.delay
 
 
 class ProfileFragment : Fragment() {
@@ -41,17 +39,17 @@ class ProfileFragment : Fragment() {
         val manRadio = binding.radioButton1
         val womanRadio = binding.radioButton2
         val image = binding.image
-        image.setBackgroundResource(R.drawable.man)
+        image.setBackgroundResource(R.drawable.man_1)
         val androidId = getAndroidId(requireContext())
 
         manRadio.setOnClickListener {
             val image = binding.image
-            image.setBackgroundResource(R.drawable.man)
+            image.setBackgroundResource(R.drawable.man_1)
         }
 
         womanRadio.setOnClickListener {
             val image = binding.image
-            image.setBackgroundResource(R.drawable.woman)
+            image.setBackgroundResource(R.drawable.woman_1)
 
         }
 
@@ -115,11 +113,11 @@ class ProfileFragment : Fragment() {
             if(user.gender == "Male") {
                 binding.radioButton1.isChecked = true
                 binding.radioButton2.isChecked = false
-                binding.image.setBackgroundResource(R.drawable.man)
+                binding.image.setBackgroundResource(R.drawable.man_1)
             } else {
                 binding.radioButton1.isChecked = false
                 binding.radioButton2.isChecked = true
-                binding.image.setBackgroundResource(R.drawable.woman)
+                binding.image.setBackgroundResource(R.drawable.woman_1)
             }
             // Update other UI elements as needed
         }
