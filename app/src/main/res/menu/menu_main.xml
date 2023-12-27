@@ -18,7 +18,7 @@
 
         <item
             android:id="@+id/bmiFragment"
-            android:icon="@drawable/baseline_calculate_24"
+            android:icon="@drawable/speedometer"
             android:title="BMI"
             app:showAsAction="always"/>
 
