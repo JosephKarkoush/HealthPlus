@@ -4,9 +4,9 @@
     <group android:checkableBehavior="single"
         >
         <item
-            android:id="@+id/profileFragment"
-            android:icon="@drawable/profile"
-            android:title="Profile"
+            android:id="@+id/homeFragment"
+            android:icon="@drawable/baseline_home_24"
+            android:title="Home"
             app:showAsAction="always"/>
 
 
@@ -24,8 +24,14 @@
 
         <item
             android:id="@+id/calorieFragment"
-            android:icon="@drawable/baseline_calculate_24"
+            android:icon="@drawable/fastfood"
             android:title="Calories"
+            app:showAsAction="always"/>
+
+        <item
+            android:id="@+id/profileFragment"
+            android:icon="@drawable/profile"
+            android:title="Profile"
             app:showAsAction="always"/>
 
 
