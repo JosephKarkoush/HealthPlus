@@ -32,7 +32,8 @@ class FoodFragment : Fragment() {
     private var cholesterol: String = ""
     private var fiber: String = ""
     private var sugar: String = ""
-    private var  carb: String = ""
+    private var carb: String = ""
+
 
 
 
@@ -55,15 +56,15 @@ class FoodFragment : Fragment() {
         )
 
 
-        val sharedViewModel =
-            ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
 
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
+                val sharedViewModel =
+                    ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
                 sharedViewModel.str = binding.food.query.toString()
-                if (sharedViewModel.str == "") {
-                } else {
+                if (sharedViewModel.str != "") {
                     sharedViewModel.food.observe(viewLifecycleOwner) { food ->
                         name = food.get(0).name
                         calories = food.get(0).calories
@@ -78,7 +79,6 @@ class FoodFragment : Fragment() {
                         sugar = food.get(0).sugar_g
                         carb = food.get(0).carbohydrates_total_g
 
-
                         dataText.setText(
                             "$name" + "\n" + "$calories" + "\n" + "$serving_size" + "\n" + "$fat_total" + "\n" + "$fat_saturated" + "\n"
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
@@ -90,6 +90,8 @@ class FoodFragment : Fragment() {
                         binding.protin.setText(binding.protin.text.toString() + "\n\n$protein"+" g")
 
                     }
+                } else {
+                    //Gör inget
                 }
             }
 
