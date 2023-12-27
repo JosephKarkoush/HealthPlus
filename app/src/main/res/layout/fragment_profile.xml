@@ -32,90 +32,96 @@
         android:layout_height="200dp"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/weight"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:gravity="center"
-            android:hint="@string/kg"
+            android:hint="@string/weight"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:backgroundTint="@color/whiteText"
             android:textColorHint="#AFAFAF"
-            android:inputType="numberSigned"
-            android:padding="16dp"
-            android:textSize="20sp"
-            android:backgroundTint="@color/cardview_light_background"
-            android:textColor="@color/whiteText"/>
+            android:textColor="@color/whiteText"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kg    "
-            android:textColor="@color/white"
-            android:textSize="20sp"
-
-            />
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="7dp"
+            android:text="@string/kg"
+            android:textColor="@color/whiteText"
+            android:textSize="25sp" />
 
     </LinearLayout>
 
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/age"
-            android:gravity="center"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/age_hint"
-            android:textColorHint="#AFAFAF"
-            android:inputType="numberSigned"
-            android:padding="16dp"
-            android:textSize="20sp"
-            android:backgroundTint="@color/cardview_light_background"
-            android:textColor="@color/whiteText"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Years"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/height"
-            android:layout_width="100dp"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/whiteText"
+            android:gravity="center"
             android:hint="@string/height_hint"
+            android:importantForAutofill="no"
+            android:inputType="number"
             android:textColorHint="#AFAFAF"
-            android:inputType="numberSigned"
-            android:padding="16dp"
-            android:textSize="20sp"
-            android:backgroundTint="@color/cardview_light_background"
             android:textColor="@color/whiteText"
-
-
-            />
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cm    "
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:layout_marginStart="5dp"
+            android:text="@string/cm"
+            android:textColor="#e3e3e3"
+            android:textSize="25sp" />
 
+    </LinearLayout>
 
-            />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/whiteText"
+            android:gravity="center"
+            android:hint="@string/age"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textColorHint="#AFAFAF"
+            android:textColor="@color/whiteText"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/year"
+            android:textColor="#e3e3e3"
+            android:textSize="25sp" />
+
     </LinearLayout>
 
     <RadioGroup
@@ -123,7 +129,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="15dp">
 
         <!-- Radio button 1 -->
         <RadioButton
