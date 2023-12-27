@@ -32,6 +32,7 @@ class FoodFragment : Fragment() {
     private var cholesterol: String = ""
     private var fiber: String = ""
     private var sugar: String = ""
+    private var  carb: String = ""
 
 
 
@@ -75,6 +76,8 @@ class FoodFragment : Fragment() {
                         cholesterol = food.get(0).cholesterol_mg
                         fiber = food.get(0).fiber_g
                         sugar = food.get(0).sugar_g
+                        carb = food.get(0).carbohydrates_total_g
+
 
                         dataText.setText(
                             "$name" + "\n" + "$calories" + "\n" + "$serving_size" + "\n" + "$fat_total" + "\n" + "$fat_saturated" + "\n"
@@ -83,7 +86,7 @@ class FoodFragment : Fragment() {
 
                         binding.cal.setText(binding.cal.text.toString() + "\n\n$calories"+" g")
                         binding.fat.setText(binding.fat.text.toString() + "\n\n$fat_total"+" g")
-                        binding.carb.setText(binding.carb.text.toString() + "\n\n$fiber"+" g")
+                        binding.carb.setText(binding.carb.text.toString() + "\n\n$carb"+" g")
                         binding.protin.setText(binding.protin.text.toString() + "\n\n$protein"+" g")
 
                     }
