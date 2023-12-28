@@ -22,7 +22,7 @@
     <string name="cm">"Cm  "</string>
     <string name="year">Year</string>
     <string name="calculate">Calculate</string>
-    <string name="textruta_bmi">Very Severely Underweight ≤ 15.9 \n Severely Underweight 16.0 - 16.9 \n Underweight 17.0 - 18.4 \n Normal 18.5 - 24.9 \n Overweight 25.0 - 29.9 \n Obese Class I 30.0 - 34.9 \n Obese Class II 35.0 - 39.9</string>
+    <string name="textruta_bmi">Very Severely Underweight ≤ 15.9 \n Severely Underweight 16.0 – 16.9 \n Underweight 17.0 - 18.4 \n Normal 18.5 - 24.9 \n Overweight 25.0 - 29.9 \n Obese Class I 30.0 - 34.9 \n Obese Class II 35.0 - 39.9</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
