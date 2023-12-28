@@ -173,9 +173,6 @@
         android:background="@drawable/rouded_corners"
         android:orientation="horizontal">
 
-
-
-
         <TextView
             android:id="@+id/foodNames"
             android:layout_width="0dp"

@@ -28,11 +28,6 @@
             android:title="Calories"
             app:showAsAction="always"/>
 
-        <item
-            android:id="@+id/profileFragment"
-            android:icon="@drawable/profile"
-            android:title="Profile"
-            app:showAsAction="always"/>
 
 
     </group>
