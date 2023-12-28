@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/statsFragment">
 
     <fragment
         android:id="@+id/bmiFragment"
@@ -30,4 +30,9 @@
         android:name="com.example.healthplus.HomeFragment"
         android:label="Home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/statsFragment"
+        android:name="com.example.healthplus.StatsFragment"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_stats" />
 </navigation>

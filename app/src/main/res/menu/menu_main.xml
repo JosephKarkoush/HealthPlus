@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <group android:checkableBehavior="single"
         >
-        <item
-            android:id="@+id/homeFragment"
-            android:icon="@drawable/baseline_home_24"
-            android:title="Home"
-            app:showAsAction="always"/>
 
+        <item
+            android:id="@+id/statsFragment"
+            android:icon="@drawable/baseline_bar_chart_24"
+            android:title="stats"
+            app:showAsAction="always"/>
 
         <item
             android:id="@+id/foodFragment"
