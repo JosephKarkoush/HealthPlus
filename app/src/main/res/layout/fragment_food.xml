@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
     android:orientation="vertical"
-
     tools:context=".FoodFragment">
+
+
+
 
 
     <SearchView
@@ -37,6 +39,8 @@
         <RelativeLayout
             android:layout_width="1dp"
             android:layout_weight="1"
+            android:gravity="right"
+            android:layout_marginLeft="80dp"
             android:id="@+id/getFoodButton"
             android:layout_height="match_parent">
 
@@ -84,7 +88,57 @@
             </RelativeLayout>
         </RelativeLayout>
 
+
+
+        <RelativeLayout
+            android:layout_width="1dp"
+            android:layout_weight="1"
+            android:id="@+id/add"
+            android:gravity="right"
+            android:layout_marginRight="30dp"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="77dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_addbutton"
+                android:layout_height="60dp">
+
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/bg_addbutton"
+                    app:tint="#fff"
+                    android:layout_margin="3dp"/>
+
+                <RelativeLayout
+                    android:layout_width="65dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="6dp"
+                    android:background="@drawable/bg_addbutton">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/addicon"
+                        android:padding="5dp"
+                        app:tint="#fff">
+                    </ImageView>
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
     </LinearLayout>
+
+
+
+
 
         <LinearLayout
             android:id="@+id/firstRow"
@@ -198,6 +252,7 @@
 
 
     </LinearLayout>
+
 
 
 </LinearLayout>
