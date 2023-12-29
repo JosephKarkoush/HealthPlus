@@ -47,7 +47,16 @@ class BmiFragment : Fragment() {
         val meter = binding.speedView
         val textview = binding.textView
         val androidId = getAndroidId(requireContext())
-        retrieveUserData(androidId)
+        retrieveUserData(androidId) { userData ->
+            if (userData != null) {
+                //Saker händer med User Objekt
+                binding.ageBmi.setText(userData.age)
+                binding.heightBmi.setText(userData.height)
+                binding.weightBmi.setText(userData.lastWeight)
+            } else {
+                //Inget Händer
+            }
+        }
 
         meter.clearSections()
         val section1 = Section(0f, .46f, Color.parseColor("#2175f3"),meter.speedometerWidth ,Style.BUTT)
@@ -140,7 +149,7 @@ class BmiFragment : Fragment() {
 
 
 
-
+/*
     private fun retrieveUserData(deviceImei: String) {
         myRef.child(deviceImei).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -157,12 +166,62 @@ class BmiFragment : Fragment() {
         })
     }
 
+ */
+
+
+
+    private fun retrieveUserData(deviceImei: String, callback: (User?) -> Unit) {
+        val userRef = myRef.child("users").child(deviceImei)
+
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // User data exists
+                    val name = dataSnapshot.child("name").getValue(String::class.java) ?: ""
+                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: ""
+                    val age = dataSnapshot.child("age").getValue(String::class.java) ?: ""
+                    val height = dataSnapshot.child("height").getValue(String::class.java) ?: ""
+                    val lastWeight = dataSnapshot.child("lastWeight").getValue(String::class.java) ?: ""
+
+                    val weightEntries = mutableListOf<WeightEntry>()
+                    val weightSnapshot = dataSnapshot.child("weight")
+
+                    for (entrySnapshot in weightSnapshot.children) {
+                        val value = entrySnapshot.child("value").getValue(String::class.java) ?: ""
+                        val nowDate = entrySnapshot.child("date").getValue(String::class.java) ?: ""
+                        val calories = entrySnapshot.child("calories").getValue(String::class.java) ?: ""
+
+                        val weightEntry = WeightEntry(value, nowDate, calories)
+                        weightEntries.add(weightEntry)
+                    }
+
+                    val userData = User(name, gender, age, height, lastWeight, weightEntries)
+                    callback(userData)
+                } else {
+                    // User data doesn't exist
+                    callback(null)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+                callback(null)
+            }
+        })
+    }
+
+
+
+
+/*
     private fun updateUI(user: User?) {
         // Update UI elements with user data
         if (user != null) {
             binding.ageBmi.setText(user.age)
             binding.heightBmi.setText(user.height)
-            binding.weightBmi.setText(user.weight)
+            binding.weightBmi.setText(user.lastWeight)
         }
     }
+
+ */
 }

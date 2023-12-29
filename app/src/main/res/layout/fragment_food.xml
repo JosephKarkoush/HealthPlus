@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
-    android:orientation="vertical"
     tools:context=".FoodFragment">
 
 
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="#40bc64"
+        android:contentDescription="Press To Add To Your Daily Calorie"
+        android:src="@drawable/addicon" />
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
     <SearchView
@@ -39,8 +54,8 @@
         <RelativeLayout
             android:layout_width="1dp"
             android:layout_weight="1"
-            android:gravity="right"
-            android:layout_marginLeft="80dp"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
             android:id="@+id/getFoodButton"
             android:layout_height="match_parent">
 
@@ -89,49 +104,6 @@
         </RelativeLayout>
 
 
-
-        <RelativeLayout
-            android:layout_width="1dp"
-            android:layout_weight="1"
-            android:id="@+id/add"
-            android:gravity="right"
-            android:layout_marginRight="30dp"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="77dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/bg_addbutton"
-                android:layout_height="60dp">
-
-
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bg_addbutton"
-                    app:tint="#fff"
-                    android:layout_margin="3dp"/>
-
-                <RelativeLayout
-                    android:layout_width="65dp"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="6dp"
-                    android:background="@drawable/bg_addbutton">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/addicon"
-                        android:padding="5dp"
-                        app:tint="#fff">
-                    </ImageView>
-                </RelativeLayout>
-
-            </RelativeLayout>
-        </RelativeLayout>
 
 
     </LinearLayout>
@@ -253,6 +225,6 @@
 
     </LinearLayout>
 
-
-
 </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

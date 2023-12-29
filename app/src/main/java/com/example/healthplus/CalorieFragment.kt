@@ -36,7 +36,20 @@ class CalorieFragment : Fragment() {
         val view = binding.root
         val calorieButton = binding.buttonCal
         val androidId = getAndroidId(requireContext())
-        retrieveUserData(androidId)
+        retrieveUserData(androidId) { userData ->
+            if (userData != null) {
+                //Saker händer med User Objekt
+                binding.age.setText(userData.age)
+                binding.height.setText(userData.height)
+                binding.weight.setText(userData.lastWeight)
+                if(userData.gender == "Male")
+                    binding.radioMale.isChecked = true
+                else
+                    binding.radioFemale.isChecked = true
+            } else {
+                //Inget Händer
+            }
+        }
 
         calorieButton.setOnClickListener {
             try {
@@ -125,7 +138,51 @@ class CalorieFragment : Fragment() {
 
 
 
+    private fun retrieveUserData(deviceImei: String, callback: (User?) -> Unit) {
+        val userRef = myRef.child("users").child(deviceImei)
 
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // User data exists
+                    val name = dataSnapshot.child("name").getValue(String::class.java) ?: ""
+                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: ""
+                    val age = dataSnapshot.child("age").getValue(String::class.java) ?: ""
+                    val height = dataSnapshot.child("height").getValue(String::class.java) ?: ""
+                    val lastWeight = dataSnapshot.child("lastWeight").getValue(String::class.java) ?: ""
+
+                    val weightEntries = mutableListOf<WeightEntry>()
+                    val weightSnapshot = dataSnapshot.child("weight")
+
+                    for (entrySnapshot in weightSnapshot.children) {
+                        val value = entrySnapshot.child("value").getValue(String::class.java) ?: ""
+                        val nowDate = entrySnapshot.child("date").getValue(String::class.java) ?: ""
+                        val calories = entrySnapshot.child("calories").getValue(String::class.java) ?: ""
+
+                        val weightEntry = WeightEntry(value, nowDate, calories)
+                        weightEntries.add(weightEntry)
+                    }
+
+                    val userData = User(name, gender, age, height, lastWeight, weightEntries)
+                    callback(userData)
+                } else {
+                    // User data doesn't exist
+                    callback(null)
+                }
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error
+                callback(null)
+            }
+        })
+    }
+
+
+
+
+
+/*
     private fun retrieveUserData(deviceImei: String) {
         myRef.child(deviceImei).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -147,11 +204,12 @@ class CalorieFragment : Fragment() {
         if (user != null) {
             binding.age.setText(user.age)
             binding.height.setText(user.height)
-            binding.weight.setText(user.weight)
+            binding.weight.setText(user.lastWeight)
             if(user.gender == "Male")
                 binding.radioMale.isChecked = true
             else
                 binding.radioFemale.isChecked = true
         }
     }
+ */
 }

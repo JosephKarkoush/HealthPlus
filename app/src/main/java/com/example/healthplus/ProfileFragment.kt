@@ -12,11 +12,16 @@ import com.google.firebase.Firebase
 import com.google.firebase.database.database
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.defaultDecayAnimationSpec
 import androidx.core.view.isVisible
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.getValue
+import java.time.LocalDate
 
 
 class ProfileFragment : Fragment() {
@@ -25,7 +30,9 @@ class ProfileFragment : Fragment() {
     val database =
         Firebase.database("https://healthplus-25c48-default-rtdb.europe-west1.firebasedatabase.app/")
     val myRef = database.getReference("users")
-    var deviceId = ""
+
+    lateinit var androidId: String
+
 
     @SuppressLint("HardwareIds")
     @RequiresApi(Build.VERSION_CODES.O)
@@ -40,7 +47,7 @@ class ProfileFragment : Fragment() {
         val womanRadio = binding.radioButton2
         val image = binding.image
         image.setBackgroundResource(R.drawable.man_1)
-        val androidId = getAndroidId(requireContext())
+        androidId = getAndroidId(requireContext())
 
         manRadio.setOnClickListener {
             val image = binding.image
@@ -63,16 +70,64 @@ class ProfileFragment : Fragment() {
             val age = binding.age.text.toString()
             val weight = binding.weight.text.toString()
             val height = binding.height.text.toString()
-            updateUser(androidId, name, gender, age, weight, height)
-            retrieveUserData(androidId)
-            binding.greecheck.isVisible = true
+
+
+
+
+            updateUser(androidId, name, gender, age, weight, height, weight)
+            retrieveUserData(androidId) { userData ->
+                if (userData != null) {
+                    //Saker händer med User Objekt
+                    binding.name.setText(userData.name)
+                    binding.age.setText(userData.age)
+                    binding.weight.setText(userData.lastWeight)
+                    binding.height.setText(userData.height)
+                    if (userData.gender == "Male") {
+                        binding.radioButton1.isChecked = true
+                        binding.radioButton2.isChecked = false
+                        binding.image.setBackgroundResource(R.drawable.man_1)
+                    } else {
+                        binding.radioButton1.isChecked = false
+                        binding.radioButton2.isChecked = true
+                        binding.image.setBackgroundResource(R.drawable.woman_1)
+                    }
+                    /*
+                    for (weightEntry in userData.weightEntries) {
+                        println("Weight: ${weightEntry.value}")
+                    }
+                     */
+                } else {
+                    //Inget Händer
+                }
+            }
+            Toast.makeText(activity, "Profile Is Up To Date", Toast.LENGTH_LONG).show()
 
         }
-        retrieveUserData(androidId)
+        retrieveUserData(androidId) { userData ->
+            if (userData != null) {
+                //Saker händer med User Objekt
+                binding.name.setText(userData.name)
+                binding.age.setText(userData.age)
+                binding.weight.setText(userData.lastWeight)
+                binding.height.setText(userData.height)
+                if (userData.gender == "Male") {
+                    binding.radioButton1.isChecked = true
+                    binding.radioButton2.isChecked = false
+                    binding.image.setBackgroundResource(R.drawable.man_1)
+                } else {
+                    binding.radioButton1.isChecked = false
+                    binding.radioButton2.isChecked = true
+                    binding.image.setBackgroundResource(R.drawable.woman_1)
+                }
+            } else {
+                //Inget Händer
+            }
+        }
         return view
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun updateUser(
         deviceImei: String,
         name: String,
@@ -80,57 +135,74 @@ class ProfileFragment : Fragment() {
         age: String,
         weight: String,
         height: String,
+        lastWeight: String,
     ) {
-        val user = User(deviceImei, name, gender, age, weight, height)
-        myRef.child(deviceImei).setValue(user)
+        val userRef = myRef.child("users").child(deviceImei)
+        userRef.child("name").setValue(name)
+        userRef.child("gender").setValue(gender)
+        userRef.child("age").setValue(age)
+        userRef.child("height").setValue(height)
+        userRef.child("lastWeight").setValue(lastWeight)
+        val nowDate = LocalDate.now().toString()
+
+
+
+
+        val weightEntry = WeightEntry(weight, nowDate, "0.0")
+        val weightRef = userRef.child("daily").child(nowDate)
+        weightRef.setValue(weightEntry)
+
+
     }
 
 
+    private fun retrieveUserData(deviceImei: String, callback: (User?) -> Unit) {
+        val userRef = myRef.child("users").child(deviceImei)
 
-    private fun retrieveUserData(deviceImei: String) {
-        myRef.child(deviceImei).addListenerForSingleValueEvent(object : ValueEventListener {
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
-                    val user = dataSnapshot.getValue(User::class.java)
-                    // Update UI with the retrieved user data
-                    updateUI(user)
+                    // User data exists
+                    val name = dataSnapshot.child("name").getValue(String::class.java) ?: ""
+                    val gender = dataSnapshot.child("gender").getValue(String::class.java) ?: ""
+                    val age = dataSnapshot.child("age").getValue(String::class.java) ?: ""
+                    val height = dataSnapshot.child("height").getValue(String::class.java) ?: ""
+                    val lastWeight =
+                        dataSnapshot.child("lastWeight").getValue(String::class.java) ?: ""
+
+                    val weightEntries = mutableListOf<WeightEntry>()
+                    val weightSnapshot = dataSnapshot.child("daily")
+
+                    for (entrySnapshot in weightSnapshot.children) {
+                        val value = entrySnapshot.child("value").getValue(String::class.java) ?: ""
+                        val nowDate = entrySnapshot.child("date").getValue(String::class.java) ?: ""
+                        val calories =
+                            entrySnapshot.child("calories").getValue(String::class.java) ?: ""
+
+
+                        val weightEntry = WeightEntry(value, nowDate, calories)
+                        weightEntries.add(weightEntry)
+                    }
+
+                    val userData = User(name, gender, age, height, lastWeight, weightEntries)
+                    callback(userData)
+                } else {
+                    // User data doesn't exist
+                    callback(null)
                 }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle error
+                callback(null)
             }
         })
     }
-
-    private fun updateUI(user: User?) {
-        // Update UI elements with user data
-        if (user != null) {
-            binding.name.setText(user.name)
-            binding.age.setText(user.age)
-            binding.weight.setText(user.weight)
-            binding.height.setText(user.height)
-            if(user.gender == "Male") {
-                binding.radioButton1.isChecked = true
-                binding.radioButton2.isChecked = false
-                binding.image.setBackgroundResource(R.drawable.man_1)
-            } else {
-                binding.radioButton1.isChecked = false
-                binding.radioButton2.isChecked = true
-                binding.image.setBackgroundResource(R.drawable.woman_1)
-            }
-            // Update other UI elements as needed
-        }
-    }
-
 
 
     private fun getAndroidId(context: Context): String {
         return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
     }
-
-
-
 
 
 }
