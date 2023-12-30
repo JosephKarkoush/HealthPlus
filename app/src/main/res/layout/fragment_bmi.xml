@@ -7,15 +7,8 @@
     android:background="@color/bakgrund"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="20dp"
+    android:paddingTop="20dp"
     tools:context=".BmiFragment">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/sharp_corners"
-        android:padding= "20dp">
 
 
     <LinearLayout
@@ -170,7 +163,6 @@
 
     </LinearLayout>
 
-    </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -17,12 +17,6 @@
         android:gravity="center"
         tools:context=".CalorieFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/sharp_corners"
-        android:padding = "20dp">
 
 
     <LinearLayout
@@ -102,6 +96,7 @@
             android:backgroundTint="@color/whiteText"
             android:gravity="center"
             android:hint="@string/age"
+            android:layout_marginStart="13dp"
             android:importantForAutofill="no"
             android:inputType="number"
             android:textColorHint="#AFAFAF"
@@ -209,8 +204,6 @@
                     android:textSize="20sp"/>
             </RelativeLayout>
         </RelativeLayout>
-
-    </LinearLayout>
 
     </LinearLayout>
 
