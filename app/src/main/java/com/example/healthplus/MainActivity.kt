@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<BottomNavigationView>(R.id.bottomNav)
         navView.setupWithNavController(navController)
 
-
+//here the controll of user existation happens
         retrieveUserData(getAndroidId(this)) { userData ->
             if (userData != null) {
                 //If user is in the database do nothing
