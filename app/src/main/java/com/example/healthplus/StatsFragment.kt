@@ -5,9 +5,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.PopupWindow
 import androidx.fragment.app.Fragment
 import com.example.healthplus.databinding.FragmentProfileBinding
 import com.example.healthplus.databinding.FragmentStatsBinding
@@ -51,11 +54,21 @@ class StatsFragment : Fragment() {
         val view = binding.root
         calChart = binding.barChartView
         weightChart = binding.barChartView2
+       val weightInfo = binding.weightInfo
+        val calinfo = binding.calInfo
 
 
         val weightList = ArrayList<Int>()
         val dateList = ArrayList<String>()
         val calList = ArrayList<Double>()
+
+        calinfo.setOnClickListener{
+            showPopupCalorie(it)
+        }
+
+        weightInfo.setOnClickListener{
+            showPopupWeight(it)
+        }
 
 
 
@@ -365,4 +378,53 @@ class StatsFragment : Fragment() {
     private fun getAndroidId(context: Context): String {
         return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
     }
+
+    private fun showPopupCalorie(view: View) {
+        // Inflate the popup_layout.xml
+        val inflater = LayoutInflater.from(requireContext())
+        val popupView: View = inflater.inflate(R.layout.popup_calorie, null)
+
+        // Create the popup window
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
+
+        // Set a dismiss listener to close the popup when the "Close Popup" button is clicked
+        val btnClosePopup: Button = popupView.findViewById(R.id.btnClosePopup)
+        btnClosePopup.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        // Show the popup at the center of the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+    }
+
+    private fun showPopupWeight(view: View) {
+        // Inflate the popup_layout.xml
+        val inflater = LayoutInflater.from(requireContext())
+        val popupView: View = inflater.inflate(R.layout.popup_weight, null)
+
+        // Create the popup window
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
+
+        // Set a dismiss listener to close the popup when the "Close Popup" button is clicked
+        val btnClosePopup: Button = popupView.findViewById(R.id.btnClosePopup)
+        btnClosePopup.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        // Show the popup at the center of the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+    }
+
 }

@@ -13,8 +13,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -45,8 +45,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -76,8 +76,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -106,8 +106,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -163,17 +163,28 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/textView"
+        android:textSize="30sp"
+        android:layout_gravity="center|bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:layout_weight="1"
+        android:text="" />
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
         <!-- Other views can be added here -->
 
         <com.github.anastr.speedviewlib.SpeedView
             android:id="@+id/speedView"
             android:layout_width="350dp"
-            android:layout_height="350dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             app:sv_centerCircleColor="#21a6f3"
             app:sv_centerCircleRadius="11dp"
@@ -202,14 +213,6 @@
             app:sv_indicatorLightColor="@color/whiteText"
             app:sv_withTremble="false" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_marginTop="50dp"
-            android:textSize="30sp"
-            android:layout_gravity="center|top"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="" />
     </FrameLayout>
 
 
