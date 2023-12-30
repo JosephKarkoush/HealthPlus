@@ -6,13 +6,22 @@
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
     android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp"
     tools:context=".BmiFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/sharp_corners"
+        android:padding= "20dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -158,6 +167,8 @@
                     android:textSize="20sp"/>
             </RelativeLayout>
         </RelativeLayout>
+
+    </LinearLayout>
 
     </LinearLayout>
 
