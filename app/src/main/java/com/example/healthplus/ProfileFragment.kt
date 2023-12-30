@@ -12,7 +12,10 @@ import com.google.firebase.Firebase
 import com.google.firebase.database.database
 import android.os.Build
 import android.provider.Settings
+import android.util.DisplayMetrics
 import android.util.Log
+import android.view.WindowManager
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.compose.animation.defaultDecayAnimationSpec
@@ -22,6 +25,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.getValue
 import java.time.LocalDate
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 
 
 class ProfileFragment : Fragment() {
@@ -48,6 +53,18 @@ class ProfileFragment : Fragment() {
         val image = binding.image
         image.setBackgroundResource(R.drawable.man_1)
         androidId = getAndroidId(requireContext())
+
+        val imageView = binding.image
+
+        // Calculate the desired size based on screen width (for example)
+        val screenWidth = getScreenWidth()
+        val imageSize = screenWidth / 3  // Set it to half of the screen width, adjust as needed
+
+        // Set the calculated size to both width and height
+        val layoutParams = imageView.layoutParams
+        layoutParams.width = imageSize
+        layoutParams.height = imageSize
+        imageView.layoutParams = layoutParams
 
         manRadio.setOnClickListener {
             val image = binding.image
@@ -124,6 +141,22 @@ class ProfileFragment : Fragment() {
             }
         }
         return view
+    }
+
+    @SuppressLint("ServiceCast")
+    private fun getScreenWidth(): Int {
+        val displayMetrics = DisplayMetrics()
+        val windowManager = requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            requireActivity().display?.apply {
+                getRealMetrics(displayMetrics)
+            }
+        } else {
+            windowManager.defaultDisplay.getMetrics(displayMetrics)
+        }
+
+        return displayMetrics.widthPixels
     }
 
 
