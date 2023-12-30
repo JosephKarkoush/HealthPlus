@@ -79,14 +79,26 @@ class ProfileFragment : Fragment() {
 
 
         updateButton.setOnClickListener {
-            val name = binding.name.text.toString()
+            var name = binding.name.text.toString()
+            if (name == "") {
+                name = "0.0"
+            }
             var gender = ""
             if (binding.radioButton1.isChecked)
                 gender = "Male"
             else gender = "Female"
-            val age = binding.age.text.toString()
-            val weight = binding.weight.text.toString()
-            val height = binding.height.text.toString()
+            var age = binding.age.text.toString()
+            if (age == "") {
+                age = "0.0"
+            }
+            var weight = binding.weight.text.toString()
+            if (weight == "") {
+                weight = "0.0"
+            }
+            var height = binding.height.text.toString()
+            if (height == "") {
+                height = "0.0"
+            }
 
 
 
@@ -146,7 +158,8 @@ class ProfileFragment : Fragment() {
     @SuppressLint("ServiceCast")
     private fun getScreenWidth(): Int {
         val displayMetrics = DisplayMetrics()
-        val windowManager = requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        val windowManager =
+            requireActivity().getSystemService(Context.WINDOW_SERVICE) as WindowManager
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
             requireActivity().display?.apply {
@@ -177,8 +190,6 @@ class ProfileFragment : Fragment() {
         userRef.child("height").setValue(height)
         userRef.child("lastWeight").setValue(lastWeight)
         val nowDate = LocalDate.now().toString()
-
-
 
 
         val weightEntry = WeightEntry(weight, nowDate, "0.0")

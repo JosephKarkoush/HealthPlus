@@ -17,6 +17,8 @@ import android.widget.PopupWindow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -51,8 +53,7 @@ class FoodFragment : Fragment() {
     val myRef = database.getReference("users")
 
 
-    lateinit var androidId:String
-
+    lateinit var androidId: String
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -76,93 +77,116 @@ class FoodFragment : Fragment() {
         )
 
 
-
         val sharedViewModel =
             ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
 
         foodButton.setOnClickListener {
             lifecycleScope.launch {
-                if(binding.food.query.toString() == "") {
+                if (binding.food.query.toString().isEmpty()) {
                     showPopup(it)
-                }else{
+                } else {
                     sharedViewModel.setQueryString(binding.food.query.toString())
                 }
 
-                    sharedViewModel.food.observe(viewLifecycleOwner) { food ->
-                        name = food.get(0).name
-                        calories = food.get(0).calories
-                        serving_size = food.get(0).serving_size_g
-                        fat_total = food.get(0).fat_total_g
-                        fat_saturated = food.get(0).fat_saturated_g
-                        protein = food.get(0).protein_g
-                        sodium = food.get(0).sodium_mg
-                        potassium = food.get(0).potassium_mg
-                        cholesterol = food.get(0).cholesterol_mg
-                        fiber = food.get(0).fiber_g
-                        sugar = food.get(0).sugar_g
-                        carb = food.get(0).carbohydrates_total_g
-
-                        if (name == ""){}
-                        else{
+                sharedViewModel.food.observe(viewLifecycleOwner) { food ->
+                    if (food.isNotEmpty()) {
+                        name = food[0].name
+                        calories = food[0].calories
+                        serving_size = food[0].serving_size_g
+                        fat_total = food[0].fat_total_g
+                        fat_saturated = food[0].fat_saturated_g
+                        protein = food[0].protein_g
+                        sodium = food[0].sodium_mg
+                        potassium = food[0].potassium_mg
+                        cholesterol = food[0].cholesterol_mg
+                        fiber = food[0].fiber_g
+                        sugar = food[0].sugar_g
+                        carb = food[0].carbohydrates_total_g
 
                         dataText.setText(
                             "$name" + "\n" + "$calories" + "\n" + "$serving_size" + "\n" + "$fat_total" + "\n" + "$fat_saturated" + "\n"
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
-                        binding.cal.setText("Cal.   " + "$calories"+"")
-                        binding.fat.setText("Fat   " + "$fat_total"+" g")
-                        binding.carb.setText("Carb.   " + "$carb"+" g")
-                        binding.protin.setText("Protein   " + "$protein"+" g")
+                        binding.cal.setText("Cal.   " + "$calories" + " ")
+                        binding.fat.setText("Fat   " + "$fat_total" + " g")
+                        binding.carb.setText("Carb.   " + "$carb" + " g")
+                        binding.protin.setText("Protein   " + "$protein" + " g")
 
-                            firstRow.visibility = View.VISIBLE
-                            secondRow.visibility = View.VISIBLE
-                            dataTable.visibility = View.VISIBLE
-                            }
-
+                        firstRow.visibility = View.VISIBLE
+                        secondRow.visibility = View.VISIBLE
+                        dataTable.visibility = View.VISIBLE
+                    } else {
+                        // Handle the case when the API response is empty or null
+                        // You can show a toast or a Snackbar to inform the user
+                        Toast.makeText(activity, "No data found", Toast.LENGTH_SHORT).show()
                     }
+                }
             }
-
         }
+
 
         binding.add.setOnClickListener {
             lifecycleScope.launch {
-                if(binding.food.query.toString() == "") {
+                if (binding.food.query.toString().isEmpty()) {
                     showPopup(it)
-                }else{
+                } else {
                     sharedViewModel.setQueryString(binding.food.query.toString())
-                    Toast.makeText(activity, "$name Is Added To Today's Calories", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        activity,
+                        "$name Is Added To Today's Calories",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
 
-                sharedViewModel.food.observe(viewLifecycleOwner) { food ->
-                    name = food.get(0).name
-                    calories = food.get(0).calories
+                sharedViewModel.food.observeOnce(viewLifecycleOwner) { food ->
+                    if (food.isNotEmpty()) {
+                        name = food[0].name
+                        val caloriesNew = food[0].calories
 
+                        retrieveUserData(androidId) { userData ->
+                            if (userData != null) {
+                                val dateList = ArrayList<String>()
 
+                                for (weightEntry in userData.weightEntries) {
+                                    weightEntry.date?.let { dateList.add(it) }
+                                }
 
-                    retrieveUserData(androidId) { userData ->
-                        if (userData != null) {
-                            //Saker händer med User Objekt
-                            val targetWeightEntry = userData.weightEntries.find { it.date == LocalDate.now().toString()}
-                            val oldCalories = targetWeightEntry!!.calories.toString()
-                            val newCalorie = oldCalories.toDouble() + calories.toDouble()
-                            updateUser(androidId, newCalorie.toString())
-
-                        } else {
-                            //Inget Händer
+                                if (dateList.contains(LocalDate.now().toString())) {
+                                    val targetWeightEntry = userData.weightEntries.find {
+                                        it.date == LocalDate.now().toString()
+                                    }
+                                    val oldCalories = targetWeightEntry!!.calories?.toDouble()
+                                    val newCalorie = oldCalories?.plus(caloriesNew.toDouble())
+                                    updateUser(androidId, newCalorie.toString())
+                                } else {
+                                    updateNewDayUser(androidId, "0.0", userData.lastWeight)
+                                    val targetWeightEntry = userData.weightEntries.find {
+                                        it.date == LocalDate.now().toString()
+                                    }
+                                    if (targetWeightEntry != null) {
+                                        Log.d("Joy", targetWeightEntry.calories.toString())
+                                        val oldCalories = targetWeightEntry.calories?.toDouble()
+                                        val newCalorie = oldCalories?.plus(caloriesNew.toDouble())
+                                        updateUser(androidId, newCalorie.toString())
+                                    }
+                                }
+                            } else {
+                                // Handle the case when user data is null
+                                // (e.g., user doesn't exist in the database)
+                                Log.e("FoodFragment", "User data is null")
+                            }
                         }
+                    } else {
+                        Toast.makeText(activity, "No data found", Toast.LENGTH_SHORT).show()
                     }
-
                 }
-
             }
-
-
         }
+
 
         return view
     }
-
 
 
     private fun showPopup(view: View) {
@@ -190,8 +214,6 @@ class FoodFragment : Fragment() {
     }
 
 
-
-
     @RequiresApi(Build.VERSION_CODES.O)
     private fun updateUser(
         deviceImei: String,
@@ -206,6 +228,20 @@ class FoodFragment : Fragment() {
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun updateNewDayUser(
+        deviceImei: String,
+        calories: String,
+        lastWeight: String,
+    ) {
+        val userRef = myRef.child("users").child(deviceImei)
+        val nowDate = LocalDate.now().toString()
+        val weightEntry = WeightEntry(lastWeight, nowDate, calories)
+        val weightRef = userRef.child("daily").child(nowDate)
+        weightRef.setValue(weightEntry)
+
+
+    }
 
 
     private fun retrieveUserData(deviceImei: String, callback: (User?) -> Unit) {
@@ -252,9 +288,20 @@ class FoodFragment : Fragment() {
     }
 
 
-
-
     private fun getAndroidId(context: Context): String {
         return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID) ?: ""
     }
+
+
+
+    // Extension function to observe LiveData only once
+    fun <T> LiveData<T>.observeOnce(owner: LifecycleOwner, observer: Observer<T>) {
+        observe(owner, object : Observer<T> {
+            override fun onChanged(t: T) {
+                observer.onChanged(t)
+                removeObserver(this)
+            }
+        })
+    }
+
 }
