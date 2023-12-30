@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.PopupWindow
+import androidx.core.view.ViewCompat.FocusDirection
 import com.example.healthplus.databinding.FragmentBmiBinding
 import com.example.healthplus.databinding.FragmentCalorieBinding
 import com.google.firebase.Firebase
@@ -35,6 +36,7 @@ class CalorieFragment : Fragment() {
         _binding = FragmentCalorieBinding.inflate(inflater, container, false)
         val view = binding.root
         val calorieButton = binding.buttonCal
+        val scrollView = binding.scrollView
         val androidId = getAndroidId(requireContext())
         retrieveUserData(androidId) { userData ->
             if (userData != null) {
@@ -86,6 +88,7 @@ class CalorieFragment : Fragment() {
                     calorieIntake.setText(calorie.toString())
                     macros.setText("$protein" + "\n" + "$carb" + "\n" + "$fat")
                 }
+                scrollView.fullScroll(View.FOCUS_DOWN)
             } else {
                 showPopup(it)
             }

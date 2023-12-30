@@ -110,7 +110,7 @@ class FoodFragment : Fragment() {
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
-                        binding.cal.setText("Cal.   " + "$calories"+" kcal")
+                        binding.cal.setText("Cal.   " + "$calories"+"")
                         binding.fat.setText("Fat   " + "$fat_total"+" g")
                         binding.carb.setText("Carb.   " + "$carb"+" g")
                         binding.protin.setText("Protein   " + "$protein"+" g")

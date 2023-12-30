@@ -21,212 +21,217 @@
         android:src="@drawable/addicon" />
 
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-
-    <SearchView
-        android:id="@+id/food"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:maxWidth="500dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="20dp"
-        android:iconifiedByDefault="false"
-        android:inputType="text"
-        android:padding="4dp"
-        android:hint="Search after product"
-        android:backgroundTint="@color/cardview_light_background"
-        android:background="@drawable/search_view"
-        android:textColor="@color/whiteText"/>
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <RelativeLayout
-            android:layout_width="1dp"
-            android:layout_weight="1"
+
+        <SearchView
+            android:id="@+id/food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/search_view"
+            android:backgroundTint="@color/cardview_light_background"
+            android:hint="Search after product"
+            android:iconifiedByDefault="false"
+            android:inputType="text"
+            android:maxWidth="500dp"
+            android:padding="4dp"
+            android:textColor="@color/whiteText" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:gravity="center"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/getFoodButton"
-            android:layout_height="match_parent">
+            android:orientation="horizontal">
 
             <RelativeLayout
-                android:layout_width="200dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/bg_button"
-                android:layout_height="60dp">
-
-
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/bg_button"
-                    app:tint="#fff"
-                    android:layout_margin="3dp"/>
+                android:id="@+id/getFoodButton"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:gravity="center">
 
                 <RelativeLayout
-                    android:layout_width="65dp"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="6dp"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_centerInParent="true"
                     android:background="@drawable/bg_button">
+
 
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/search_icon"
-                        android:padding="10dp"
-                        app:tint="#fff">
-                    </ImageView>
+                        android:layout_margin="3dp"
+                        android:src="@drawable/bg_button"
+                        app:tint="#fff" />
+
+                    <RelativeLayout
+                        android:layout_width="65dp"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="6dp"
+                        android:background="@drawable/bg_button">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:padding="10dp"
+                            android:src="@drawable/search_icon"
+                            app:tint="#fff"></ImageView>
+                    </RelativeLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="65dp"
+                        android:gravity="center"
+                        android:text="Search"
+                        android:textColor="#000"
+                        android:textSize="20sp" />
                 </RelativeLayout>
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="65dp"
-                    android:gravity="center"
-                    android:text="Search"
-                    android:textColor="#000"
-                    android:textSize="20sp"/>
             </RelativeLayout>
-        </RelativeLayout>
-
-
-
-
-    </LinearLayout>
-
-
-
-
-
-        <LinearLayout
-            android:id="@+id/firstRow"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/cal"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="15dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:text="Cal."
-                android:gravity="center"
-                android:background="@drawable/sharp_corners"
-                android:textColor="@color/whiteText"
-                android:textSize="32sp" />
-
-
-            <TextView
-                android:id="@+id/fat"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="15dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/sharp_corners"
-                android:text="Fat"
-                android:gravity="center"
-                android:textColor="@color/whiteText"
-                android:textSize="32sp" />
 
 
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/secondRow"
-            android:visibility="invisible"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center">
+            tools:ignore="SpeakableTextPresentCheck">
 
-            <TextView
-                android:id="@+id/carb"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="15dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/sharp_corners"
-                android:text="Carb."
-                android:gravity="center"
-                android:textColor="@color/whiteText"
-                android:textSize="32sp" />
-
-            <TextView
-                android:id="@+id/protin"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:padding="15dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/sharp_corners"
-                android:text="Protien"
-                android:gravity="center"
-                android:textColor="@color/whiteText"
-                android:textSize="32sp" />
+                android:orientation="vertical">
 
 
-        </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/firstRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/cal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sharp_corners"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="Cal."
+                        android:textColor="@color/whiteText"
+                        android:textSize="32sp" />
 
 
+                    <TextView
+                        android:id="@+id/fat"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sharp_corners"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="Fat"
+                        android:textColor="@color/whiteText"
+                        android:textSize="32sp" />
 
 
-    <LinearLayout
-        android:id="@+id/datatable"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:background="@drawable/rouded_corners"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/foodNames"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:paddingVertical="15dp"
-            android:paddingStart="25dp"
-            android:text="Name: \nCalories: \nSize: \nFat: \nFat Saturated: \nProtein: \nSodium: \nPotassium: \nCholesterol: \nFiber: \nSugar:"
-            android:layout_height="wrap_content"
-            android:textColor="@color/whiteText"
-            android:textSize="20sp" />
+                </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/foodData"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:paddingVertical="15dp"
-            android:paddingStart="20dp"
-            android:layout_height="match_parent"
-            android:textColor="@color/whiteText"
-            android:textSize="20sp" />
+                <LinearLayout
+                    android:id="@+id/secondRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/carb"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sharp_corners"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="Carb."
+                        android:textColor="@color/whiteText"
+                        android:textSize="32sp" />
+
+                    <TextView
+                        android:id="@+id/protin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/sharp_corners"
+                        android:gravity="center"
+                        android:padding="15dp"
+                        android:text="Protien"
+                        android:textColor="@color/whiteText"
+                        android:textSize="32sp" />
 
 
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/datatable"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/rouded_corners"
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
+
+                    <TextView
+                        android:id="@+id/foodNames"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:paddingVertical="15dp"
+                        android:paddingStart="25dp"
+                        android:text="Name: \nCalories: \nSize: \nFat: \nFat Saturated: \nProtein: \nSodium: \nPotassium: \nCholesterol: \nFiber: \nSugar:"
+                        android:textColor="@color/whiteText"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/foodData"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingVertical="15dp"
+                        android:paddingStart="20dp"
+                        android:textColor="@color/whiteText"
+                        android:textSize="20sp" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
 
     </LinearLayout>
-
-</LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
