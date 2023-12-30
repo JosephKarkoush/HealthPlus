@@ -1,16 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:paddingTop="20dp"
     tools:context=".BmiFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bmiInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/whiteText"
+        android:contentDescription="Press To Add To Your Daily Calorie"
+        android:src="@drawable/infoletter"
+        android:outlineAmbientShadowColor="@color/black"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.MyApp.FloatingButton"
+        app:fabCustomSize="40dp"
+        app:maxImageSize="20dp"
+        android:padding="8dp"/>
 
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bakgrund"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="20dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -215,5 +235,7 @@
 
     </FrameLayout>
 
-
 </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
