@@ -110,10 +110,10 @@ class FoodFragment : Fragment() {
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
-                        binding.cal.setText("Cal." + "\n\n$calories"+" kcal")
-                        binding.fat.setText("Fat" + "\n\n$fat_total"+" g")
-                        binding.carb.setText("Carb." + "\n\n$carb"+" g")
-                        binding.protin.setText("Protein" + "\n\n$protein"+" g")
+                        binding.cal.setText("Cal.   " + "$calories"+" kcal")
+                        binding.fat.setText("Fat   " + "$fat_total"+" g")
+                        binding.carb.setText("Carb.   " + "$carb"+" g")
+                        binding.protin.setText("Protein   " + "$protein"+" g")
 
                             firstRow.visibility = View.VISIBLE
                             secondRow.visibility = View.VISIBLE
@@ -131,7 +131,7 @@ class FoodFragment : Fragment() {
                     showPopup(it)
                 }else{
                     sharedViewModel.setQueryString(binding.food.query.toString())
-                    Toast.makeText(activity, "$name Is Added To Today's Calorie", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, "$name Is Added To Today's Calories", Toast.LENGTH_LONG).show()
                 }
 
                 sharedViewModel.food.observe(viewLifecycleOwner) { food ->

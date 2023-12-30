@@ -6,60 +6,65 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bakgrund"
+    android:padding="30dp"
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:padding="16dp">
+
 
 
 
     <TextView
         android:id="@+id/numberOfUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="0"
+        android:gravity="center|top"
         android:textColor="#6750A4"
-        android:textSize="100sp"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"/>
+        android:textSize="100sp"/>
 
-    </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Users"
+        android:textColor="#e0da26"
+        android:textSize="100sp"
+        android:fontFamily="@font/branda"
+        android:gravity="center|top"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="Using"
         android:textColor="#21a6f3"
-        android:textSize="120sp"
+        android:textSize="100sp"
         android:fontFamily="@font/branda"
-        android:layout_gravity="center"/>
+        android:gravity="center|top"/>
 
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center|top"
+        android:fontFamily="@font/branda"
         android:text="This"
         android:textColor="#40bc64"
-        android:textSize="120sp"
-        android:fontFamily="@font/branda"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"/>
-
+        android:textSize="100sp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:text="App"
         android:textColor="#fc5448"
-        android:textSize="120sp"
+        android:textSize="100sp"
         android:fontFamily="@font/branda"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"/>
+        android:gravity="center|top"/>
 
 
 </LinearLayout>

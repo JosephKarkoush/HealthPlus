@@ -27,11 +27,11 @@ import java.time.LocalDate
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    val database =
+    private val database =
         Firebase.database("https://healthplus-25c48-default-rtdb.europe-west1.firebasedatabase.app/")
-    val myRef = database.getReference("users")
+    private val myRef = database.getReference("users")
 
-    lateinit var androidId: String
+    private lateinit var androidId: String
 
 
     @SuppressLint("HardwareIds")
