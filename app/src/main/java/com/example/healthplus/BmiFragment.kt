@@ -46,6 +46,7 @@ class BmiFragment : Fragment() {
         val button = binding.buttonBmi
         val meter = binding.speedView
         val textview = binding.textView
+        val infoButton = binding.bmiInfo
         val androidId = getAndroidId(requireContext())
         retrieveUserData(androidId) { userData ->
             if (userData != null) {
@@ -56,6 +57,10 @@ class BmiFragment : Fragment() {
             } else {
                 //Inget Händer
             }
+        }
+
+        infoButton.setOnClickListener{
+            showPopupBmi(it)
         }
 
         meter.clearSections()
@@ -118,6 +123,30 @@ class BmiFragment : Fragment() {
         // Inflate the popup_layout.xml
         val inflater = LayoutInflater.from(requireContext())
         val popupView: View = inflater.inflate(R.layout.popup_layout, null)
+
+        // Create the popup window
+        val popupWindow = PopupWindow(
+            popupView,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            true
+        )
+
+        // Set a dismiss listener to close the popup when the "Close Popup" button is clicked
+        val btnClosePopup: Button = popupView.findViewById(R.id.btnClosePopup)
+        btnClosePopup.setOnClickListener {
+            popupWindow.dismiss()
+        }
+
+        // Show the popup at the center of the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0)
+
+    }
+
+    private fun showPopupBmi(view: View) {
+        // Inflate the popup_layout.xml
+        val inflater = LayoutInflater.from(requireContext())
+        val popupView: View = inflater.inflate(R.layout.popup_bmi, null)
 
         // Create the popup window
         val popupWindow = PopupWindow(
