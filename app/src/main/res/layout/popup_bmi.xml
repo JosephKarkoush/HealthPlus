@@ -1,0 +1,29 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background = "@drawable/rouded_corners"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="
+BMI, or Body Mass Index, is a numeric value derived from an individual's weight, height and age. It is commonly used to categorize people into different weight status categories. However, BMI has limitations as it doesn't directly measure body fat or consider muscle mass variations."
+        android:textColor="@color/white"
+        android:padding="5dp"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnClosePopup"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Close" />
+</LinearLayout>

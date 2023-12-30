@@ -19,7 +19,7 @@
         android:src="@drawable/infoletter"
         android:outlineAmbientShadowColor="@color/black"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.MyApp.FloatingButton"
-        app:fabCustomSize="40dp"
+        app:fabCustomSize="35dp"
         app:maxImageSize="20dp"
         android:padding="8dp"/>
 
