@@ -78,58 +78,110 @@ class ProfileFragment : Fragment() {
         }
 
 
+        retrieveUserData(androidId) { userData ->
+            if (userData != null) {
+                binding.saveimage.visibility = View.VISIBLE
+            } else {
+                binding.createimage.visibility = View.VISIBLE
+                binding.buttext.setText("CREATE USER")
+            }
+        }
+
+
+
         updateButton.setOnClickListener {
-            var name = binding.name.text.toString()
-            if (name == "") {
-                name = "0.0"
-            }
-            var gender = ""
-            if (binding.radioButton1.isChecked)
-                gender = "Male"
-            else gender = "Female"
-            var age = binding.age.text.toString()
-            if (age == "") {
-                age = "0.0"
-            }
-            var weight = binding.weight.text.toString()
-            if (weight == "") {
-                weight = "0.0"
-            }
-            var height = binding.height.text.toString()
-            if (height == "") {
-                height = "0.0"
-            }
+            if (binding.buttext.text.toString() == "SAVE") {
+                var name = binding.name.text.toString()
+                var gender = ""
+                if (binding.radioButton1.isChecked)
+                    gender = "Male"
+                else gender = "Female"
+                var age = binding.age.text.toString()
+                var weight = binding.weight.text.toString()
+                var height = binding.height.text.toString()
 
 
 
 
-            updateUser(androidId, name, gender, age, weight, height, weight)
-            retrieveUserData(androidId) { userData ->
-                if (userData != null) {
-                    //Saker händer med User Objekt
-                    binding.name.setText(userData.name)
-                    binding.age.setText(userData.age)
-                    binding.weight.setText(userData.lastWeight)
-                    binding.height.setText(userData.height)
-                    if (userData.gender == "Male") {
-                        binding.radioButton1.isChecked = true
-                        binding.radioButton2.isChecked = false
-                        binding.image.setBackgroundResource(R.drawable.man_1)
+                if (!name.isEmpty() && !age.isEmpty() && !weight.isEmpty() && !height.isEmpty()) {
+
+
+                updateUser(androidId, name, gender, age, weight, height, weight)
+                retrieveUserData(androidId) { userData ->
+                    if (userData != null) {
+                        //Saker händer med User Objekt
+                        binding.name.setText(userData.name)
+                        binding.age.setText(userData.age)
+                        binding.weight.setText(userData.lastWeight)
+                        binding.height.setText(userData.height)
+                        if (userData.gender == "Male") {
+                            binding.radioButton1.isChecked = true
+                            binding.radioButton2.isChecked = false
+                            binding.image.setBackgroundResource(R.drawable.man_1)
+                        } else {
+                            binding.radioButton1.isChecked = false
+                            binding.radioButton2.isChecked = true
+                            binding.image.setBackgroundResource(R.drawable.woman_1)
+                        }
+                        /*
+                        for (weightEntry in userData.weightEntries) {
+                            println("Weight: ${weightEntry.value}")
+                        }
+                         */
                     } else {
-                        binding.radioButton1.isChecked = false
-                        binding.radioButton2.isChecked = true
-                        binding.image.setBackgroundResource(R.drawable.woman_1)
+                        //Inget Händer
                     }
-                    /*
-                    for (weightEntry in userData.weightEntries) {
-                        println("Weight: ${weightEntry.value}")
-                    }
-                     */
+                }
+                Toast.makeText(activity, "Profile Is Up To Date", Toast.LENGTH_LONG).show()
                 } else {
-                    //Inget Händer
+                    Toast.makeText(activity, "Everything must be filled", Toast.LENGTH_LONG).show()
+                }
+            } else if (binding.buttext.text.toString() == "CREATE USER") {
+                var name = binding.name.text.toString()
+                var gender = ""
+                if (binding.radioButton1.isChecked)
+                    gender = "Male"
+                else gender = "Female"
+                var age = binding.age.text.toString()
+                var weight = binding.weight.text.toString()
+                var height = binding.height.text.toString()
+
+                if (!name.isEmpty() && !age.isEmpty() && !weight.isEmpty() && !height.isEmpty()) {
+
+                    createUser(androidId, name, gender, age, weight, height, weight)
+                    retrieveUserData(androidId) { userData ->
+                        if (userData != null) {
+                            //Saker händer med User Objekt
+                            binding.name.setText(userData.name)
+                            binding.age.setText(userData.age)
+                            binding.weight.setText(userData.lastWeight)
+                            binding.height.setText(userData.height)
+                            if (userData.gender == "Male") {
+                                binding.radioButton1.isChecked = true
+                                binding.radioButton2.isChecked = false
+                                binding.image.setBackgroundResource(R.drawable.man_1)
+                            } else {
+                                binding.radioButton1.isChecked = false
+                                binding.radioButton2.isChecked = true
+                                binding.image.setBackgroundResource(R.drawable.woman_1)
+                            }
+                            /*
+                            for (weightEntry in userData.weightEntries) {
+                                println("Weight: ${weightEntry.value}")
+                            }
+                             */
+                        } else {
+                            //Inget Händer
+                        }
+                    }
+                    Toast.makeText(activity, "Your Profile Is Created", Toast.LENGTH_LONG).show()
+                    binding.createimage.visibility = View.INVISIBLE
+                    binding.saveimage.visibility = View.VISIBLE
+                    binding.buttext.setText("SAVE")
+                } else {
+                    Toast.makeText(activity, "Everything must be filled", Toast.LENGTH_LONG).show()
                 }
             }
-            Toast.makeText(activity, "Profile Is Up To Date", Toast.LENGTH_LONG).show()
 
         }
         retrieveUserData(androidId) { userData ->
@@ -175,6 +227,45 @@ class ProfileFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun updateUser(
+        deviceImei: String,
+        name: String,
+        gender: String,
+        age: String,
+        weight: String,
+        height: String,
+        lastWeight: String,
+    ) {
+
+
+        retrieveUserData(androidId) { userData ->
+            if (userData != null) {
+                //Saker händer med User Objekt
+                val userRef = myRef.child("users").child(deviceImei)
+                userRef.child("name").setValue(name)
+                userRef.child("gender").setValue(gender)
+                userRef.child("age").setValue(age)
+                userRef.child("height").setValue(height)
+                userRef.child("lastWeight").setValue(lastWeight)
+                val nowDate = LocalDate.now().toString()
+
+                val targetWeightEntry = userData.weightEntries.find {
+                    it.date == LocalDate.now().toString()
+                }
+
+                val weightEntry = WeightEntry(weight, nowDate, targetWeightEntry!!.calories)
+                val weightRef = userRef.child("daily").child(nowDate)
+                weightRef.setValue(weightEntry)
+            } else {
+                //Inget Händer
+            }
+        }
+
+
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createUser(
         deviceImei: String,
         name: String,
         gender: String,

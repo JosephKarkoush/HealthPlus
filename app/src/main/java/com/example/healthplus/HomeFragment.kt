@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
 
 
     private fun retrieveUserData() {
-        myRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        myRef.child("users").addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 var counter = dataSnapshot.getChildrenCount()
                 numberOfUserText.setText(counter.toString())

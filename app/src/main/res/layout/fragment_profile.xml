@@ -194,15 +194,26 @@
                     android:background="@drawable/bg_button">
 
                     <ImageView
+                        android:id="@+id/saveimage"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="10dp"
+                        android:visibility="invisible"
                         android:src="@drawable/baseline_save_24"
+                        app:tint="#fff"></ImageView>
+                    <ImageView
+                        android:id="@+id/createimage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="10dp"
+                        android:visibility="invisible"
+                        android:src="@drawable/adduser"
                         app:tint="#fff"></ImageView>
                 </RelativeLayout>
 
 
                 <TextView
+                    android:id="@+id/buttext"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginRight="65dp"

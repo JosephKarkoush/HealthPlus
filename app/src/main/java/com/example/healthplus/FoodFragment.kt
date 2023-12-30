@@ -293,7 +293,6 @@ class FoodFragment : Fragment() {
     }
 
 
-
     // Extension function to observe LiveData only once
     fun <T> LiveData<T>.observeOnce(owner: LifecycleOwner, observer: Observer<T>) {
         observe(owner, object : Observer<T> {
