@@ -83,7 +83,7 @@ class ProfileFragment : Fragment() {
                 binding.saveimage.visibility = View.VISIBLE
             } else {
                 binding.createimage.visibility = View.VISIBLE
-                binding.buttext.setText("CREATE USER")
+                binding.buttext.setText(getString(R.string.createbutton))
             }
         }
 
@@ -132,9 +132,9 @@ class ProfileFragment : Fragment() {
                         //Inget Händer
                     }
                 }
-                Toast.makeText(activity, "Profile Is Up To Date", Toast.LENGTH_LONG).show()
+                Toast.makeText(activity, getString(R.string.profileupdate), Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(activity, "Everything must be filled", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG).show()
                 }
             } else if (binding.buttext.text.toString() == "CREATE USER") {
                 var name = binding.name.text.toString()
@@ -174,12 +174,12 @@ class ProfileFragment : Fragment() {
                             //Inget Händer
                         }
                     }
-                    Toast.makeText(activity, "Your Profile Is Created", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.profilecreated), Toast.LENGTH_LONG).show()
                     binding.createimage.visibility = View.INVISIBLE
                     binding.saveimage.visibility = View.VISIBLE
                     binding.buttext.setText("SAVE")
                 } else {
-                    Toast.makeText(activity, "Everything must be filled", Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG).show()
                 }
             }
 

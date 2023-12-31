@@ -28,7 +28,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calories"
+        android:text="@string/calories"
         android:textColor="@color/whiteText"
         android:textSize="27sp"
         android:layout_gravity="center"
@@ -62,7 +62,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weight"
+        android:text="@string/weight"
         android:textColor="@color/whiteText"
         android:textSize="27sp"
         android:layout_gravity="center"

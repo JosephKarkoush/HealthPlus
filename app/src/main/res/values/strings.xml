@@ -1,28 +1,96 @@
 <resources>
-    <string name="app_name">HealthPlus</string>
-    <string name="EnterInfoYear">""</string>
-    <string name="EnterInfoKG">""</string>
-    <string name="EnterInfoCM">""</string>
-    <string name="daily_calories">Daily Calories: x</string>
+    <string name="app_name" translatable="false">HealthPlus</string>
+
+
+
+
+
+
+
+
+
+    <string name="bmifragment">BMI Calculator</string>
+    <string name="profilefragment">Profile</string>
+    <string name="foodfragment">Food Lookup</string>
+    <string name="caloriefragment">Calorie Calculator</string>
+    <string name="homefragment">Home</string>
+    <string name="statsfragment">Statistics</string>
+
+    <string name="bmi" translatable="false">BMI</string>
+    <string name="stats">STATS</string>
+    <string name="numbofusers">Number of users</string>
+
+
+
+    <string name="normalweight" translatable="false">Normal</string>
+    <string name="underweight">Underweight</string>
+    <string name="severelyunderweight">Severely underweight</string>
+    <string name="overweight">Overweight</string>
+    <string name="obese">Obese</string>
+
+    <string name="dailyintake">Daily Calorie Intake</string>
+
+
+
+    <string name="food_details_name">Name: </string>
+    <string name="food_details_calories">Calories: </string>
+    <string name="food_details_size">Size: </string>
+    <string name="food_details_fat">Fat: </string>
+    <string name="food_details_fat_saturated">Saturated Fat: </string>
+    <string name="food_details_protein" translatable="false">Protein: </string>
+    <string name="food_details_sodium">Sodium: </string>
+    <string name="food_details_potassium">Potassium: </string>
+    <string name="food_details_cholesterol">Cholesterol: </string>
+    <string name="food_details_fiber" translatable="false">Fiber: </string>
+    <string name="food_details_sugar">Sugar: </string>
+    <string name="datanotfound">No data found</string>
+    <string name="isadded">Is Added To Todays Calories"</string>
+
+
+
+
+
     <string name="length">Length</string>
     <string name="weight">Weight</string>
-    <string name="protein">Protein: x</string>
-    <string name="carbs">Carbs: x</string>
-    <string name="fat">Fat: x</string>
-
-    <string name="y">Y</string>
-
-    <string name="spinner_name">work_rutine\n</string>
-
+    <string name="name_hint">Name</string>
     <string name="height_hint">Height</string>
     <string name="age_hint">Age</string>
     <string name="Change">Change</string>
     <string name="age">Age </string>
-    <string name="kg">"Kg  "</string>
-    <string name="cm">"Cm  "</string>
+    <string name="kg" translatable="false">"Kg  "</string>
+    <string name="cm" translatable="false">"Cm  "</string>
     <string name="year">Year</string>
     <string name="calculate">Calculate</string>
-    <string name="textruta_bmi">Very Severely Underweight ≤ 15.9 \n Severely Underweight 16.0 – 16.9 \n Underweight 17.0 - 18.4 \n Normal 18.5 - 24.9 \n Overweight 25.0 - 29.9 \n Obese Class I 30.0 - 34.9 \n Obese Class II 35.0 - 39.9</string>
+    <string name="textruta_bmi">Very Severely Underweight ≤ 15.9   Severely Underweight 16.0 – 16.9   Underweight 17.0 - 18.4   Normal 18.5 - 24.9   Overweight 25.0 - 29.9   Obese Class I 30.0 - 34.9   Obese Class II 35.0 - 39.9</string>
+    <string name="presstoadd">Press To Add To Your Daily Calorie</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="caloriemacros">"Protein:  \nCarb:  \nFat:  \n"</string>
+    <string name="macros">Macros</string>
+    <string name="search">Search after product</string>
+    <string name="searchbutton">Search</string>
+    <string name="protein" translatable="false">Protein</string>
+    <string name="calorie">Cal.</string>
+    <string name="carbs">Carb.</string>
+    <string name="fat">Fat</string>
+    <string name="fooddetails">Name:  \nCalories:  \nSize:  \nFat:  \nFat Saturated:  \nProtein:  \nSodium:  \nPotassium:  \nCholesterol:  \nFiber:  \nSugar:</string>
+    <string name="users">Users</string>
+    <string name="using">Using</string>
+    <string name="thisword">This</string>
+    <string name="appword">App</string>
+    <string name="savebutton">SAVE</string>
+    <string name="createbutton">CREATE USER</string>
+    <string name="calories">Calories</string>
+    <string name="close">Close</string>
+    <string name="profilecreated">Your Profile Is Created</string>
+    <string name="profileupdate">Profile Is Up To Date</string>
+    <string name="filleverything">Everything must be filled</string>
+    <string name="popup">Please enter correct values as inputs</string>
+    <string name="caloriepopup">the graph below shows calorie intake for your last 10 recorded days. You can add daily calories with the green button in the food lookup screen</string>
+    <string name="bmipopup">BMI, or Body Mass Index, is a numeric value derived from an individuals weight, height and age. It is commonly used to categorize people into different weight status categories. However, BMI has limitations as it doesnt directly measure body fat or consider muscle mass variations.</string>
+    <string name="weightpopup">the graph below shows weight change for your last 90 recorded days. You can update your current weight in your profile</string>
+
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

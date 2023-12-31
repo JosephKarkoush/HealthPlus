@@ -91,24 +91,24 @@ class BmiFragment : Fragment() {
                 meter.speedTo(bmi)
 
                 if (bmi >= 18.5 && bmi <= 24.9){
-                    textview.text = "Normal"
+                    textview.text = getString(R.string.normalweight)
                     textview.setTextColor(Color.parseColor("#40bc64"))
                 }
                 if (bmi >= 17 && bmi <= 18.4){
-                    textview.text = "Underweight"
+                    textview.text = getString(R.string.underweight)
                     textview.setTextColor(Color.parseColor("#21a6f3"))
                 }
                 if (bmi <= 16.9){
-                    textview.text = "Severely underweight"
+                    textview.text = getString(R.string.severelyunderweight)
                     textview.setTextColor(Color.parseColor("#2175f3"))
                 }
                 if (bmi >= 25 && bmi <= 29.9){
-                    textview.text = "Overweight"
+                    textview.text = getString(R.string.overweight)
                     textview.setTextColor(Color.parseColor("#fc5448"))
                 }
 
                 if (bmi >= 30) {
-                    textview.text = "Obese"
+                    textview.text = getString(R.string.obese)
                     textview.setTextColor(Color.parseColor("#f53022"))
                 }
 

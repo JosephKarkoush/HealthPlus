@@ -17,7 +17,7 @@
         android:layout_height="0dp"
         android:layout_weight="1.1"
         android:gravity="center"
-        android:hint="Name"
+        android:hint="@string/name_hint"
         android:textColorHint="#AFAFAF"
         android:textColor="@color/whiteText"
         android:inputType="text"
@@ -141,7 +141,7 @@
             android:textColor="@color/white"
             android:textSize="17sp"
             android:layout_marginEnd="10dp"
-            android:text="Male"
+            android:text="@string/male"
             android:checked="true" />
 
         <!-- Radio button 2 -->
@@ -152,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:text="Female" />
+            android:text="@string/female" />
 
         <!-- Add more radio buttons as needed -->
 
@@ -218,7 +218,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="65dp"
                     android:gravity="center"
-                    android:text="Save"
+                    android:text="@string/savebutton"
                     android:textColor="#000"
                     android:textSize="20sp" />
             </RelativeLayout>

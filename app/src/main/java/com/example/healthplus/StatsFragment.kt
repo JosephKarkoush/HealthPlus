@@ -101,7 +101,7 @@ class StatsFragment : Fragment() {
         val entriesWeight = ArrayList<Entry>()
 
         val dateSize = dateList.size //används för att kolla antal sparade data i databasen
-        val title2 = "Weight"
+        val title2 = getString(R.string.weight)
         var nrLoopsWeight = dateSize
 
         if (nrLoopsWeight > 91) {
@@ -143,7 +143,7 @@ class StatsFragment : Fragment() {
 
         val dateSize = dateList.size //används för att kolla antal sparade data i databasen
 
-        val title1 = "Calories"
+        val title1 = getString(R.string.calories)
 
 
         var nrLoopsCal = dateSize

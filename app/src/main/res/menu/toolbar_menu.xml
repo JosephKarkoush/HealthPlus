@@ -8,13 +8,13 @@
         <item
             android:id="@+id/homeFragment"
             android:icon="@drawable/baseline_volunteer_activism_24"
-            android:title="Number of users"
+            android:title="@string/numbofusers"
             app:showAsAction="always"/>
     <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/profile"
         app:showAsAction="always"
-        android:title="Profile" />
+        android:title="@string/profilefragment" />
 
     </group>
 </menu>

@@ -72,8 +72,14 @@ class FoodFragment : Fragment() {
         val dataTable = binding.datatable
         androidId = getAndroidId(requireContext())
         nameText.setText(
-            "Name: " + "\n" + "Calories: " + "\n" + "Size: " + "\n" + "Fat: " + "\n" + "Fat Saturated: " + "\n"
-                    + "Protein: " + "\n" + "Sodium: " + "\n" + "Potassium: " + "\n" + "Cholesterol: " + "\n" + "Fiber: " + "\n" + "Sugar: "
+            getString(R.string.food_details_name) + "\n" + getString(R.string.food_details_calories) + "\n" + getString(
+                R.string.food_details_size
+            ) + "\n" + getString(R.string.food_details_fat) + "\n" + getString(R.string.food_details_fat_saturated) + "\n"
+                    + getString(R.string.food_details_protein) + "\n" + getString(R.string.food_details_sodium) + "\n" + getString(
+                R.string.food_details_potassium
+            ) + "\n" + getString(R.string.food_details_cholesterol) + "\n" + getString(R.string.food_details_fiber) + "\n" + getString(
+                R.string.food_details_sugar
+            )
         )
 
 
@@ -108,10 +114,10 @@ class FoodFragment : Fragment() {
                                     + "$protein" + "\n" + "$sodium" + "\n" + "$potassium" + "\n" + "$cholesterol" + "\n" + "$fiber" + "\n" + "$sugar"
                         )
 
-                        binding.cal.setText("Cal.   " + "$calories" + " ")
-                        binding.fat.setText("Fat   " + "$fat_total" + " g")
-                        binding.carb.setText("Carb.   " + "$carb" + " g")
-                        binding.protin.setText("Protein   " + "$protein" + " g")
+                        binding.cal.setText(getString(R.string.calorie) + "   " + "$calories" + " ")
+                        binding.fat.setText(getString(R.string.fat) + "   " + "$fat_total" + " g")
+                        binding.carb.setText(getString(R.string.carbs) + "   " + "$carb" + " g")
+                        binding.protin.setText(getString(R.string.protein) + "   " + "$protein" + " g")
 
                         firstRow.visibility = View.VISIBLE
                         secondRow.visibility = View.VISIBLE
@@ -119,7 +125,7 @@ class FoodFragment : Fragment() {
                     } else {
                         // Handle the case when the API response is empty or null
                         // You can show a toast or a Snackbar to inform the user
-                        Toast.makeText(activity, "No data found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, getString(R.string.datanotfound), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -134,7 +140,7 @@ class FoodFragment : Fragment() {
                     sharedViewModel.setQueryString(binding.food.query.toString())
                     Toast.makeText(
                         activity,
-                        "$name Is Added To Today's Calories",
+                        name + getString(R.string.isadded),
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -178,7 +184,7 @@ class FoodFragment : Fragment() {
                             }
                         }
                     } else {
-                        Toast.makeText(activity, "No data found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, getString(R.string.datanotfound), Toast.LENGTH_SHORT).show()
                     }
                 }
             }

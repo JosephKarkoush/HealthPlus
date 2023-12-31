@@ -15,7 +15,7 @@
         android:layout_gravity="top|end"
         android:layout_margin="16dp"
         android:backgroundTint="@color/whiteText"
-        android:contentDescription="Press To Add To Your Daily Calorie"
+        android:contentDescription="@string/presstoadd"
         android:src="@drawable/infoletter"
         android:outlineAmbientShadowColor="@color/black"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.MyApp.FloatingButton"
@@ -175,7 +175,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="65dp"
                     android:gravity="center"
-                    android:text="Calculate"
+                    android:text="@string/calculate"
                     android:textColor="#000"
                     android:textSize="20sp"/>
             </RelativeLayout>

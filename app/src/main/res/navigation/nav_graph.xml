@@ -8,31 +8,31 @@
     <fragment
         android:id="@+id/bmiFragment"
         android:name="com.example.healthplus.BmiFragment"
-        android:label="BMI Calculator"
+        android:label="@string/bmifragment"
         tools:layout="@layout/fragment_bmi" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.healthplus.ProfileFragment"
-        android:label="Profile"
+        android:label="@string/profilefragment"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/foodFragment"
         android:name="com.example.healthplus.FoodFragment"
-        android:label="Food Lookup"
+        android:label="@string/foodfragment"
         tools:layout="@layout/fragment_food" />
     <fragment
         android:id="@+id/calorieFragment"
         android:name="com.example.healthplus.CalorieFragment"
-        android:label="Calorie Calculator"
+        android:label="@string/caloriefragment"
         tools:layout="@layout/fragment_calorie" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.healthplus.HomeFragment"
-        android:label="Home"
+        android:label="@string/homefragment"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/statsFragment"
         android:name="com.example.healthplus.StatsFragment"
-        android:label="Statistics"
+        android:label="@string/statsfragment"
         tools:layout="@layout/fragment_stats" />
 </navigation>

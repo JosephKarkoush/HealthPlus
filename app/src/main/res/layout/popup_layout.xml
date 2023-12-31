@@ -12,7 +12,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginTop="10dp"
-       android:text="Please enter correct values as inputs"
+       android:text="@string/popup"
        android:textColor="@color/white"
        android:padding="5dp"/>
 
@@ -23,5 +23,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Close" />
+        android:text="@string/close" />
 </LinearLayout>

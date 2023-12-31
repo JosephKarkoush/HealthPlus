@@ -7,25 +7,25 @@
         <item
             android:id="@+id/statsFragment"
             android:icon="@drawable/baseline_bar_chart_24"
-            android:title="stats"
+            android:title="@string/stats"
             app:showAsAction="always"/>
 
         <item
             android:id="@+id/foodFragment"
             android:icon="@drawable/foodlookup"
-            android:title="Food lookup"
+            android:title="@string/foodfragment"
             app:showAsAction="always"/>
 
         <item
             android:id="@+id/bmiFragment"
             android:icon="@drawable/speedometer"
-            android:title="BMI"
+            android:title="@string/bmi"
             app:showAsAction="always"/>
 
         <item
             android:id="@+id/calorieFragment"
             android:icon="@drawable/fastfood"
-            android:title="Calories"
+            android:title="@string/calories"
             app:showAsAction="always"/>
 
 

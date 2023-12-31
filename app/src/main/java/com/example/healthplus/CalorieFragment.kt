@@ -76,7 +76,7 @@ class CalorieFragment : Fragment() {
                     protein = round((0.25 * calorie)/4)
                     carb = round((0.45 * calorie)/4)
                     fat = round((0.30 * calorie)/4)
-                    calorieText.setText("Daily Calorie Intake")
+                    calorieText.setText(getString(R.string.dailyintake))
                     calorieIntake.setText(calorie.toString())
                     macros.setText("$protein" + "\n" + "$carb" + "\n" + "$fat")
                 } else if(femaleButton.isChecked){
@@ -84,7 +84,7 @@ class CalorieFragment : Fragment() {
                     protein = round((0.25 * calorie)/4)
                     carb = round((0.45 * calorie)/4)
                     fat = round((0.30 * calorie)/4)
-                    calorieText.setText("Daily Calorie Intake")
+                    calorieText.setText(getString(R.string.dailyintake))
                     calorieIntake.setText(calorie.toString())
                     macros.setText("$protein" + "\n" + "$carb" + "\n" + "$fat")
                 }

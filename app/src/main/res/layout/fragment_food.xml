@@ -17,7 +17,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:backgroundTint="#40bc64"
-        android:contentDescription="Press To Add To Your Daily Calorie"
+        android:contentDescription="@string/presstoadd"
         android:src="@drawable/addicon" />
 
 
@@ -36,7 +36,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/search_view"
             android:backgroundTint="@color/cardview_light_background"
-            android:hint="Search after product"
+            android:hint="@string/search"
             android:iconifiedByDefault="false"
             android:inputType="text"
             android:maxWidth="500dp"
@@ -95,7 +95,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginRight="65dp"
                         android:gravity="center"
-                        android:text="Search"
+                        android:text="@string/searchbutton"
                         android:textColor="#000"
                         android:textSize="20sp" />
                 </RelativeLayout>
@@ -133,7 +133,7 @@
                         android:background="@drawable/sharp_corners"
                         android:gravity="center"
                         android:padding="15dp"
-                        android:text="Cal."
+                        android:text="@string/calorie"
                         android:textColor="@color/whiteText"
                         android:textSize="32sp" />
 
@@ -147,7 +147,7 @@
                         android:background="@drawable/sharp_corners"
                         android:gravity="center"
                         android:padding="15dp"
-                        android:text="Fat"
+                        android:text="@string/fat"
                         android:textColor="@color/whiteText"
                         android:textSize="32sp" />
 
@@ -172,7 +172,7 @@
                         android:background="@drawable/sharp_corners"
                         android:gravity="center"
                         android:padding="15dp"
-                        android:text="Carb."
+                        android:text="@string/carbs"
                         android:textColor="@color/whiteText"
                         android:textSize="32sp" />
 
@@ -185,7 +185,7 @@
                         android:background="@drawable/sharp_corners"
                         android:gravity="center"
                         android:padding="15dp"
-                        android:text="Protien"
+                        android:text="@string/protein"
                         android:textColor="@color/whiteText"
                         android:textSize="32sp" />
 
@@ -210,7 +210,7 @@
                         android:layout_weight="1"
                         android:paddingVertical="15dp"
                         android:paddingStart="25dp"
-                        android:text="Name: \nCalories: \nSize: \nFat: \nFat Saturated: \nProtein: \nSodium: \nPotassium: \nCholesterol: \nFiber: \nSugar:"
+                        android:text="@string/fooddetails"
                         android:textColor="@color/whiteText"
                         android:textSize="20sp" />
 
