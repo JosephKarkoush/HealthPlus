@@ -218,7 +218,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="65dp"
                     android:gravity="center"
-                    android:text="@string/savebutton"
+                    android:text=""
                     android:textColor="#000"
                     android:textSize="20sp" />
             </RelativeLayout>

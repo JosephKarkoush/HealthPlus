@@ -23,7 +23,7 @@
     <string name="height_hint">Längd</string>
     <string name="age_hint">Ålder</string>
     <string name="Change">Ändra</string>
-    <string name="age">Längd</string>
+    <string name="age">Ålder</string>
     <string name="year">År</string>
     <string name="calculate">Räkna</string>
     <string name="textruta_bmi">Mycket kraftigt undervikt ≤ 15,9 Svår undervikt 16,0 – 16,9 Undervikt 17,0 - 18,4 Normal 18,5 - 24,9 Övervikt 25,0 - 29,9 Övervikt Klass I 30,0 - 34,9 Övervikt Klass - 339.9 Övervikt.</string>

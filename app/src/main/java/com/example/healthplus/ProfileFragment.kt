@@ -81,6 +81,7 @@ class ProfileFragment : Fragment() {
         retrieveUserData(androidId) { userData ->
             if (userData != null) {
                 binding.saveimage.visibility = View.VISIBLE
+                binding.buttext.setText(getString(R.string.savebutton))
             } else {
                 binding.createimage.visibility = View.VISIBLE
                 binding.buttext.setText(getString(R.string.createbutton))
