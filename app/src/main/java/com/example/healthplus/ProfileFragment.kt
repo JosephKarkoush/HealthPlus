@@ -27,6 +27,10 @@ import com.google.firebase.database.getValue
 import java.time.LocalDate
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.getSystemService
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class ProfileFragment : Fragment() {
@@ -81,10 +85,10 @@ class ProfileFragment : Fragment() {
         retrieveUserData(androidId) { userData ->
             if (userData != null) {
                 binding.saveimage.visibility = View.VISIBLE
-                binding.buttext.setText(getString(R.string.savebutton))
+                binding.buttext.setText("SAVE")
             } else {
                 binding.createimage.visibility = View.VISIBLE
-                binding.buttext.setText(getString(R.string.createbutton))
+                binding.buttext.setText("CREATE USER")
             }
         }
 
@@ -107,35 +111,36 @@ class ProfileFragment : Fragment() {
                 if (!name.isEmpty() && !age.isEmpty() && !weight.isEmpty() && !height.isEmpty()) {
 
 
-                updateUser(androidId, name, gender, age, weight, height, weight)
-                retrieveUserData(androidId) { userData ->
-                    if (userData != null) {
-                        //Saker händer med User Objekt
-                        binding.name.setText(userData.name)
-                        binding.age.setText(userData.age)
-                        binding.weight.setText(userData.lastWeight)
-                        binding.height.setText(userData.height)
-                        if (userData.gender == "Male") {
-                            binding.radioButton1.isChecked = true
-                            binding.radioButton2.isChecked = false
-                            binding.image.setBackgroundResource(R.drawable.man_1)
-                        } else {
-                            binding.radioButton1.isChecked = false
-                            binding.radioButton2.isChecked = true
-                            binding.image.setBackgroundResource(R.drawable.woman_1)
+                    updateUser(androidId, name, gender, age, weight, height, weight)
+                    GlobalScope.launch(Dispatchers.Main) {
+                        delay(500)
+                        retrieveUserData(androidId) { userData ->
+                            if (userData != null) {
+                                //Saker händer med User Objekt
+                                binding.name.setText(userData.name)
+                                binding.age.setText(userData.age)
+                                binding.weight.setText(userData.lastWeight)
+                                binding.height.setText(userData.height)
+                                if (userData.gender == "Male") {
+                                    binding.radioButton1.isChecked = true
+                                    binding.radioButton2.isChecked = false
+                                    binding.image.setBackgroundResource(R.drawable.man_1)
+                                } else {
+                                    binding.radioButton1.isChecked = false
+                                    binding.radioButton2.isChecked = true
+                                    binding.image.setBackgroundResource(R.drawable.woman_1)
+                                }
+                            } else {
+                                //Inget Händer
+                            }
                         }
-                        /*
-                        for (weightEntry in userData.weightEntries) {
-                            println("Weight: ${weightEntry.value}")
-                        }
-                         */
-                    } else {
-                        //Inget Händer
                     }
-                }
-                Toast.makeText(activity, getString(R.string.profileupdate), Toast.LENGTH_LONG).show()
+
+                    Toast.makeText(activity, getString(R.string.profileupdate), Toast.LENGTH_LONG)
+                        .show()
                 } else {
-                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG)
+                        .show()
                 }
             } else if (binding.buttext.text.toString() == "CREATE USER") {
                 var name = binding.name.text.toString()
@@ -175,12 +180,14 @@ class ProfileFragment : Fragment() {
                             //Inget Händer
                         }
                     }
-                    Toast.makeText(activity, getString(R.string.profilecreated), Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.profilecreated), Toast.LENGTH_LONG)
+                        .show()
                     binding.createimage.visibility = View.INVISIBLE
                     binding.saveimage.visibility = View.VISIBLE
                     binding.buttext.setText("SAVE")
                 } else {
-                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG).show()
+                    Toast.makeText(activity, getString(R.string.filleverything), Toast.LENGTH_LONG)
+                        .show()
                 }
             }
 
